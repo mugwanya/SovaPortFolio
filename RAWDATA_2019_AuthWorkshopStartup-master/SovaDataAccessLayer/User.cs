@@ -7,7 +7,7 @@ namespace SovaDataAccessLayer
     // User Class
     public class User
     {
-        public int Ïd { get; set; }
+        public int Id { get; set; }
 
         public string DisplayName { get; set; }
 
