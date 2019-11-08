@@ -4,6 +4,7 @@ using System.Text;
 
 namespace SovaDataAccessLayer
 {
+    // Wi Class
     public class Wi
     {
         public int Id { get; set; }

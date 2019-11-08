@@ -5,6 +5,7 @@ using System.Text;
 
 namespace SovaDataAccessLayer
 {
+    // Word Class
     public class Word
     {
         public int Id { get; set; }

@@ -4,6 +4,7 @@ using System.Text;
 
 namespace SovaDataAccessLayer
 {
+    //  Inverted_Index Class
     public class Inverted_Index
     {
         public int Id { get; set; }

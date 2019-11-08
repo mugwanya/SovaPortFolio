@@ -5,6 +5,7 @@ using System.Text;
 
 namespace SovaDataAccessLayer
 {
+    // StopWord Class
     public class StopWord
     {
         [Key]

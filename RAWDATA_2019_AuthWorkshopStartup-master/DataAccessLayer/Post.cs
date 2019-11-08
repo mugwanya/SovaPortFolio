@@ -1,6 +1,6 @@
 ﻿namespace DataAccessLayer
 {
-    //Github Test Commenttttt
+    //Github Test Comment
     public class Post
     {
 

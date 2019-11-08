@@ -5,7 +5,8 @@ using System.Text;
 
 namespace SovaDataAccessLayer
 {
-  public class SovaContext : DbContext
+    // Context Class
+    public class SovaContext : DbContext
     {
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Inverted_Index> Inverted_Indexes { get; set; }
