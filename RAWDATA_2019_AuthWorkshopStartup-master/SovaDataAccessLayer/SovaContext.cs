@@ -16,5 +16,33 @@ namespace SovaDataAccessLayer
         public DbSet<User> Users { get; set; }
         public DbSet<Word> Words { get; set; }
         public DbSet<Wi> Wis { get; set; }
+
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            // Remember To Add Your Own Password and Username To Connect To The Sova Database
+            optionsBuilder.UseNpgsql(
+                "host=localhost;db=northwind;uid=postgres;pwd=davsse2969");
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Post>().ToTable("posts");
+            modelBuilder.Entity<Post>().Property(m => m.Id).HasColumnName("id");
+            modelBuilder.Entity<Post>().Property(m => m.PostTypeId).HasColumnName("posttypeid");
+            modelBuilder.Entity<Post>().Property(m => m.AcceptedAnswersId).HasColumnName("acceptedanswersid");
+            modelBuilder.Entity<Post>().Property(m => m.CreationDate).HasColumnName("creationdate");
+            modelBuilder.Entity<Post>().Property(m => m.Score).HasColumnName("score");
+            modelBuilder.Entity<Post>().Property(m => m.Body).HasColumnName("body");
+            modelBuilder.Entity<Post>().Property(m => m.CloseDate).HasColumnName("closedate");
+            modelBuilder.Entity<Post>().Property(m => m.Title).HasColumnName("title");
+            modelBuilder.Entity<Post>().Property(m => m.Body).HasColumnName("body");
+            modelBuilder.Entity<Post>().Property(m => m.Tags).HasColumnName("tags");
+            modelBuilder.Entity<Post>().Property(m => m.UserId).HasColumnName("userid");
+        }
+
+
     }
+
+
 }
