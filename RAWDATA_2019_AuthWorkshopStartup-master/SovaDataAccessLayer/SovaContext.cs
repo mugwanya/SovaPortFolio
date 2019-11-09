@@ -1,7 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
+
 
 namespace SovaDataAccessLayer
 {
@@ -20,13 +18,22 @@ namespace SovaDataAccessLayer
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            // Remember To Add Your Own Password and Username To Connect To The Sova Database
+            // Remember To Provide Your Own Password and Username, To Connect To The Sova Database
+            //
             optionsBuilder.UseNpgsql(
                 "host=localhost;db=stackdatabase;uid=postgres;pwd=davsse2969");
+                
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+        // Test To Check Connection Url Gets All Words From SovaDatabase
+         // http://localhost:5001/api/wis //
+
+            modelBuilder.Entity<Wi>().ToTable("wi");
+            modelBuilder.Entity<Wi>().Property(m => m.Id).HasColumnName("id");
+            modelBuilder.Entity<Wi>().Property(m => m.Word).HasColumnName("word");
+
             //modelBuilder.Entity<Post>().ToTable("posts");
             //modelBuilder.Entity<Post>().Property(m => m.Id).HasColumnName("id");
             //modelBuilder.Entity<Post>().Property(m => m.PostTypeId).HasColumnName("posttypeid");
@@ -40,12 +47,14 @@ namespace SovaDataAccessLayer
             //modelBuilder.Entity<Post>().Property(m => m.Tags).HasColumnName("tags");
             //modelBuilder.Entity<Post>().Property(m => m.UserId).HasColumnName("userid");
 
-            modelBuilder.Entity<User>().ToTable("users");
-            modelBuilder.Entity<User>().Property(m => m.Id).HasColumnName("id");
-            modelBuilder.Entity<User>().Property(m => m.DisplayName).HasColumnName("displayname");
-            modelBuilder.Entity<User>().Property(m => m.CreationDate).HasColumnName("creationdate");
-            modelBuilder.Entity<User>().Property(m => m.Location).HasColumnName("location");
-            modelBuilder.Entity<User>().Property(m => m.Age).HasColumnName("age");
+            //modelBuilder.Entity<User>().ToTable("users");
+            //modelBuilder.Entity<User>().Property(m => m.Id).HasColumnName("id");
+            //modelBuilder.Entity<User>().Property(m => m.DisplayName).HasColumnName("displayname");
+            //modelBuilder.Entity<User>().Property(m => m.CreationDate).HasColumnName("creationdate");
+            //modelBuilder.Entity<User>().Property(m => m.Location).HasColumnName("location");
+            //modelBuilder.Entity<User>().Property(m => m.Age).HasColumnName("age");
+
+
 
 
 

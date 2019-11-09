@@ -5,18 +5,20 @@ using System.Text;
 
 namespace SovaDataAccessLayer
 {
-  public class SovaDataService : IDatabaseServiceUsers
+  public class SovaDataService : IDatabaseServiceWI
     {
         // Gets All GetUsers
 
-        public List<User> GetUsers()
+        public List<Wi> GetWords()
         {
-             var db = new SovaContext();
+            SovaContext db = new SovaContext();
 
-            var s = db.Users.ToList();
+            var s = db.Wis.ToList();
 
             return s;
 
         }
+
+     
     }
 }

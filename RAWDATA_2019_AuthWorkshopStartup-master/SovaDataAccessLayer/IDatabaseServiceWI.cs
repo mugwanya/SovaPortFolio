@@ -4,10 +4,8 @@ using System.Text;
 
 namespace SovaDataAccessLayer
 {
-   public interface IDatabaseServiceUsers
+   public interface IDatabaseServiceWI
     {
-            List<User> GetUsers();
-
-        
+        List<Wi> GetWords();
     }
 }
