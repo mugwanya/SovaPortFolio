@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NpgsqlTypes;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -13,13 +14,13 @@ namespace SovaDataAccessLayer
 
         public int AcceptedAnswersId { get; set; }
 
-        public DateTime CreationDate { get; set; }
+        public NpgsqlDateTime CreationDate { get; set; }
 
         public int Score { get; set; }
 
         public string Body { get; set; }
 
-        public DateTime CloseDate { get; set; }
+        public NpgsqlDateTime CloseDate { get; set; }
 
         public string Title { get; set; }
 
