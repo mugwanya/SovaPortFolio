@@ -5,8 +5,17 @@ using System.Text;
 
 namespace SovaDataAccessLayer
 {
-  public class SovaDataService : IDatabaseServiceWI
+  public class SovaDataService : IDatabaseServiceWI , IQADatabaseService
     {
+        public List<Comment> GetComments()
+        {
+            SovaContext db = new SovaContext();
+
+            var s = db.Comments.ToList();
+
+            return s;
+        }
+
         // Gets All GetUsers
 
         public List<Wi> GetWords()
@@ -18,6 +27,9 @@ namespace SovaDataAccessLayer
             return s;
 
         }
+
+
+
 
      
     }

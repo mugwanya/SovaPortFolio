@@ -34,6 +34,17 @@ namespace SovaDataAccessLayer
             modelBuilder.Entity<Wi>().Property(m => m.Id).HasColumnName("id");
             modelBuilder.Entity<Wi>().Property(m => m.Word).HasColumnName("word");
 
+            modelBuilder.Entity<Comment>().ToTable("comment");
+            modelBuilder.Entity<Comment>().Property(m => m.Id).HasColumnName("id");
+            modelBuilder.Entity<Comment>().Property(m => m.PostId).HasColumnName("postid");
+            modelBuilder.Entity<Comment>().Property(m => m.Score).HasColumnName("score");
+            modelBuilder.Entity<Comment>().Property(m => m.Text).HasColumnName("text");
+            modelBuilder.Entity<Comment>().Property(m => m.CreateDate).HasColumnName("createDate");
+            modelBuilder.Entity<Comment>().Property(m => m.UserId).HasColumnName("userid");
+
+
+
+
             //modelBuilder.Entity<Post>().ToTable("posts");
             //modelBuilder.Entity<Post>().Property(m => m.Id).HasColumnName("id");
             //modelBuilder.Entity<Post>().Property(m => m.PostTypeId).HasColumnName("posttypeid");
@@ -53,6 +64,7 @@ namespace SovaDataAccessLayer
             //modelBuilder.Entity<User>().Property(m => m.CreationDate).HasColumnName("creationdate");
             //modelBuilder.Entity<User>().Property(m => m.Location).HasColumnName("location");
             //modelBuilder.Entity<User>().Property(m => m.Age).HasColumnName("age");
+
 
 
 
