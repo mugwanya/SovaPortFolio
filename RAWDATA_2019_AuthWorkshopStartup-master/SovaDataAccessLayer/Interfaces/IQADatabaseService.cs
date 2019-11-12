@@ -7,8 +7,13 @@ namespace SovaDataAccessLayer
 {
    public interface IQADatabaseService
     {
+        List<Comment> GetComments();
 
-        public List<Comment> GetComments();
-       
+        List<User> GetUsers();
+
+        List<Post>GetPosts();
+
+        List<LinkPost> GetLinkPostId();
+
     }
 }

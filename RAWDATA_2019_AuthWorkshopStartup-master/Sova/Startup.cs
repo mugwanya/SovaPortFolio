@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Sova.Controller;
 using SovaDataAccessLayer;
 
 namespace Sova
@@ -19,7 +20,8 @@ namespace Sova
         {
             services.AddControllers();
 
-            services.AddSingleton<IDatabaseServiceWI, SovaDataService>();
+           // services.AddSingleton<IDatabaseServiceWI,  SovaDataService>();
+            services.AddSingleton<IQADatabaseService, SovaDataService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
