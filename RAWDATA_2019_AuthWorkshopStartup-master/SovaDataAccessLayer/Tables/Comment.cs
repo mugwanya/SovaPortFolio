@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NpgsqlTypes;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -15,7 +16,7 @@ namespace SovaDataAccessLayer
 
         public string Text { get; set; }
 
-        public DateTime CreateDate { get; set; }
+        public NpgsqlDateTime CreateDate { get; set; }
 
         public int UserId { get; set; }
     }
