@@ -21,7 +21,7 @@ namespace SovaDataAccessLayer
             // Remember To Provide Your Own Password and Username, To Connect To The Sova Database
             //
             optionsBuilder.UseNpgsql(
-                "host=localhost;db=stackdatabase;uid=postgres;pwd=davsse2969");
+                "host=localhost;db=stackdatabase;uid=SOVAAPI;pwd=rawdata");
                 
         }
 
