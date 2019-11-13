@@ -27,5 +27,13 @@ namespace Sova.Controller
             return Ok(users);
 
         }
+
+        [HttpGet("{userId}")]
+        public ActionResult GetUser (int userId)
+        {
+            var user = _dataService.GetUser(userId);
+            if (user == null) return NotFound();
+            return Ok(user);
+        }
     }
 }

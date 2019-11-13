@@ -11,7 +11,7 @@ namespace SovaDataAccessLayer
         public int Id { get; set; }
         public int ParentId { get; set; }
         public int PostTypeId { get; set; }
-
+        
         public int AcceptedAnswersId { get; set; }
 
         public DateTime CreationDate { get; set; }

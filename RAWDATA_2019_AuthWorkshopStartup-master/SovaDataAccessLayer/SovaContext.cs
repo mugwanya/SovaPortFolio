@@ -42,9 +42,6 @@ namespace SovaDataAccessLayer
             modelBuilder.Entity<Comment>().Property(m => m.CreateDate).HasColumnName("createdate");
             modelBuilder.Entity<Comment>().Property(m => m.UserId).HasColumnName("userid");
 
-
-
-
             modelBuilder.Entity<Post>().ToTable("posts", "QA");
             modelBuilder.Entity<Post>().Property(m => m.Id).HasColumnName("id");
             modelBuilder.Entity<Post>().Property(m => m.PostTypeId).HasColumnName("posttypeid");
@@ -67,14 +64,7 @@ namespace SovaDataAccessLayer
 
             modelBuilder.Entity<LinkPost>().ToTable("linkpost", "QA");
             modelBuilder.Entity<LinkPost>().Property(m => m.LinkPostId).HasColumnName("postid");
-            modelBuilder.Entity<LinkPost>().Property(m => m.PostId).HasColumnName("linkpostid");
-           
-
-
-
-
-
-
+            modelBuilder.Entity<LinkPost>().Property(m => m.PostId).HasColumnName("linkpostid");          
         }
 
 

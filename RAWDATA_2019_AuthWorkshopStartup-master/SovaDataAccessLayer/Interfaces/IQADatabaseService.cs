@@ -15,5 +15,7 @@ namespace SovaDataAccessLayer
 
         List<LinkPost> GetLinkPostId();
 
+        User GetUser(int userId);
+
     }
 }

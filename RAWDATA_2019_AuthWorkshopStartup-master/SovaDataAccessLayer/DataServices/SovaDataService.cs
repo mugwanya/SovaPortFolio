@@ -27,8 +27,14 @@ namespace SovaDataAccessLayer
             return s;
         }
 
-        // Gets All GetUsers
+        //Get a post by Id
+        public User GetUser(int userId)
+        {
+            SovaContext db = new SovaContext();
+            return db.Users.Find(userId);
+        }
 
+        // Gets All GetUsers
         public List<User> GetUsers()
         {
             SovaContext db = new SovaContext();
