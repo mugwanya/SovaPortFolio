@@ -30,11 +30,11 @@ namespace SovaDataAccessLayer
         // Test To Check Connection Url Gets All Words From SovaDatabase
          // http://localhost:5001/api/wis //
 
-            modelBuilder.Entity<Wi>().ToTable("wi");
+            modelBuilder.Entity<Wi>().ToTable("wi", "QA");
             modelBuilder.Entity<Wi>().Property(m => m.Id).HasColumnName("id");
             modelBuilder.Entity<Wi>().Property(m => m.Word).HasColumnName("word");
 
-            modelBuilder.Entity<Comment>().ToTable("comments");
+            modelBuilder.Entity<Comment>().ToTable("comments", "QA");
             modelBuilder.Entity<Comment>().Property(m => m.Id).HasColumnName("id");
             modelBuilder.Entity<Comment>().Property(m => m.PostId).HasColumnName("postid");
             modelBuilder.Entity<Comment>().Property(m => m.Score).HasColumnName("score");
@@ -45,7 +45,7 @@ namespace SovaDataAccessLayer
 
 
 
-            modelBuilder.Entity<Post>().ToTable("posts");
+            modelBuilder.Entity<Post>().ToTable("posts", "QA");
             modelBuilder.Entity<Post>().Property(m => m.Id).HasColumnName("id");
             modelBuilder.Entity<Post>().Property(m => m.PostTypeId).HasColumnName("posttypeid");
             modelBuilder.Entity<Post>().Property(m => m.ParentId).HasColumnName("parentid");
@@ -58,14 +58,14 @@ namespace SovaDataAccessLayer
             modelBuilder.Entity<Post>().Property(m => m.Tags).HasColumnName("tags");    
             modelBuilder.Entity<Post>().Property(m => m.UserId).HasColumnName("userid");
 
-            modelBuilder.Entity<User>().ToTable("users");
+            modelBuilder.Entity<User>().ToTable("users", "QA");
              modelBuilder.Entity<User>().Property(m => m.Id).HasColumnName("id");
              modelBuilder.Entity<User>().Property(m => m.DisplayName).HasColumnName("displayname");
              modelBuilder.Entity<User>().Property(m => m.CreationDate).HasColumnName("creationdate");
              modelBuilder.Entity<User>().Property(m => m.Location).HasColumnName("location");
              modelBuilder.Entity<User>().Property(m => m.Age).HasColumnName("age");
 
-            modelBuilder.Entity<LinkPost>().ToTable("linkpost");
+            modelBuilder.Entity<LinkPost>().ToTable("linkpost", "QA");
             modelBuilder.Entity<LinkPost>().Property(m => m.LinkPostId).HasColumnName("postid");
             modelBuilder.Entity<LinkPost>().Property(m => m.PostId).HasColumnName("linkpostid");
            

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SovaDataAccessLayer
 {
-  public class SovaDataService : IDatabaseServiceWI , IQADatabaseService
+  public class SovaDataService : /*IDatabaseServiceWI , */IQADatabaseService
     {
         // Gets All Comments
         public List<Comment> GetComments()
@@ -38,16 +38,16 @@ namespace SovaDataAccessLayer
             return s;
         }
 
-        // Gets All Words (TEST)
+        /*// Gets All Words (TEST)
         public List<Wi> GetWords()
         {
             SovaContext db = new SovaContext();
 
-            //var s = db.Wis.ToList();
+            var s = db.Wis.ToList();
 
-            return null;// s;
+            return s;
 
-        }
+        }*/
 
         // Gets All LinkPosts
         public List<LinkPost> GetLinkPostId()

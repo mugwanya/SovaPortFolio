@@ -20,8 +20,8 @@ namespace Sova
         {
             services.AddControllers();
 
-           // services.AddSingleton<IDatabaseServiceWI,  SovaDataService>();
-            services.AddSingleton<IQADatabaseService, SovaDataService>();
+           //services.AddSingleton<IDatabaseServiceWI,  SovaDataService>();
+           services.AddSingleton<IQADatabaseService, SovaDataService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
