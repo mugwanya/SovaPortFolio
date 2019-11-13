@@ -30,7 +30,31 @@ namespace SovaDataAccessLayer
         {
             SovaContext db = new SovaContext();
             comment.Id = db.Comments.Max(x => x.Id) + 1;
+            comment.CreateDate = DateTime.Now;
             db.Add(comment);
+            db.SaveChanges();
+        }
+
+        public bool CommentExcist(int commentId)
+        {
+            return GetComment(commentId) != null;
+        }
+
+        public void UpdateComment (Comment comment)
+        {
+            SovaContext db = new SovaContext();
+            db.Comments.Update(comment);
+            db.SaveChanges();
+        }
+
+        public bool DeleteComment (int commentId)
+        {
+            SovaContext db = new SovaContext();
+            var comment = db.Comments.Find(commentId);
+            if (comment == null) return false;
+            db.Remove(comment);
+            db.SaveChanges();
+            return true;
         }
 
         ///////////////////////

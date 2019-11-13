@@ -43,8 +43,31 @@ namespace Sova.Controller
         public ActionResult CreateComment ([FromBody] Comment comment)
         {
             _dataService.CreateComment(comment);
-            return Ok(comment);
+            return Created("", comment);
         }
 
+        //UPDATE
+        [HttpPut ("{commentId}")]
+        public ActionResult UpdateComment (int commentId, Comment comment)
+        {
+            if (!_dataService.CommentExcist(commentId))
+            {
+                return NotFound();
+            }
+            comment.Id = commentId;
+            _dataService.UpdateComment(comment);
+            return NoContent();
+        }
+
+        //DELETE
+        [HttpDelete ("{commentId}")]
+        public ActionResult DeleteComment (int commentId)
+        {
+            if (_dataService.DeleteComment(commentId))
+            {
+                return NoContent();
+            }
+            return NotFound();
+        }
     }
 }
