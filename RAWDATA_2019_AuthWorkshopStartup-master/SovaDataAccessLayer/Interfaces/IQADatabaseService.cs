@@ -17,6 +17,6 @@ namespace SovaDataAccessLayer
 
         User GetUser(int userId);
         Comment GetComment(int commentId);
-
+        void CreateComment(Comment comment);
     }
 }

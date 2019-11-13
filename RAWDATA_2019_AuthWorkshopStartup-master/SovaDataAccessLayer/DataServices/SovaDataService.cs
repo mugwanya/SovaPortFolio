@@ -26,7 +26,12 @@ namespace SovaDataAccessLayer
             return db.Comments.Find(commentId);
         }
 
-        //public Comment CreateComment ()
+        public void CreateComment (Comment comment)
+        {
+            SovaContext db = new SovaContext();
+            comment.Id = db.Comments.Max(x => x.Id) + 1;
+            db.Add(comment);
+        }
 
         ///////////////////////
         // 

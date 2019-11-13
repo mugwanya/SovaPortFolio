@@ -21,7 +21,7 @@ namespace Sova.Controller
             _dataService = dataService;
         }
 
-
+        //READ
         [HttpGet]
         public ActionResult<List<Comment>> GetComments()
         {
@@ -37,5 +37,14 @@ namespace Sova.Controller
             if (comment == null) return NotFound();
             return Ok(comment);
         }
+
+        //CREATE
+        [HttpPost]
+        public ActionResult CreateComment ([FromBody] Comment comment)
+        {
+            _dataService.CreateComment(comment);
+            return Ok(comment);
+        }
+
     }
 }
