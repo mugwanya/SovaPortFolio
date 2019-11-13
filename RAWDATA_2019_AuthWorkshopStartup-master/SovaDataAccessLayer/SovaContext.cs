@@ -18,11 +18,8 @@ namespace SovaDataAccessLayer
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            // Remember To Provide Your Own Password and Username, To Connect To The Sova Database
-            //
             optionsBuilder.UseNpgsql(
                 "host=localhost;db=stackoverflow;uid=SOVAAPI;pwd=rawdata");
-                
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -30,6 +30,12 @@ namespace Sova.Controller
 
         }
 
-
+        [HttpGet("{commentId}")]
+        public ActionResult GetComment (int commentId)
+        {
+            var comment = _dataService.GetComment(commentId);
+            if (comment == null) return NotFound();
+            return Ok(comment);
+        }
     }
 }

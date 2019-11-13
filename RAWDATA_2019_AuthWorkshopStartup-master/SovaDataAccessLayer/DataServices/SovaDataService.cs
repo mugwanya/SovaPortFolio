@@ -7,15 +7,32 @@ namespace SovaDataAccessLayer
 {
   public class SovaDataService : /*IDatabaseServiceWI , */IQADatabaseService
     {
+        ///////////////////////
+        // 
+        // Comments 
+        // create, read, update, delete 
+        /////////////////////// 
+
         // Gets All Comments
         public List<Comment> GetComments()
         {
             SovaContext db = new SovaContext();
-
-            var s = db.Comments.ToList();
-
-            return s;
+            return db.Comments.ToList();
         }
+
+        public Comment GetComment(int commentId)
+        {
+            SovaContext db = new SovaContext();
+            return db.Comments.Find(commentId);
+        }
+
+        //public Comment CreateComment ()
+
+        ///////////////////////
+        // 
+        // Posts 
+        // 
+        /////////////////////// 
 
         // Gets All Posts
         public List<Post> GetPosts()
@@ -34,6 +51,12 @@ namespace SovaDataAccessLayer
             return db.Users.Find(userId);
         }
 
+        ///////////////////////
+        // 
+        // Users 
+        // 
+        /////////////////////// 
+
         // Gets All GetUsers
         public List<User> GetUsers()
         {
@@ -43,6 +66,31 @@ namespace SovaDataAccessLayer
 
             return s;
         }
+
+        ///////////////////////
+        // 
+        // Linkpost 
+        // 
+        /////////////////////// 
+
+        // Gets All LinkPosts
+        public List<LinkPost> GetLinkPostId()
+        {
+            SovaContext db = new SovaContext();
+
+            var s = db.LinkPosts.ToList();
+
+            return s;
+        }
+
+
+
+
+
+
+
+
+
 
         /*// Gets All Words (TEST)
         public List<Wi> GetWords()
@@ -54,15 +102,5 @@ namespace SovaDataAccessLayer
             return s;
 
         }*/
-
-        // Gets All LinkPosts
-        public List<LinkPost> GetLinkPostId()
-        {
-            SovaContext db = new SovaContext();
-
-            var s = db.LinkPosts.ToList();
-
-            return s;
-        }
     }
 }
