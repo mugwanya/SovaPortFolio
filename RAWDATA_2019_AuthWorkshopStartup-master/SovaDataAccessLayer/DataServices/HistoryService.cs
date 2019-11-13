@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SovaDataAccessLayer.DataServices
 {
-    class HistoryService : IHistoryService
+    class HistoryService //: IHistoryService
     {
         public bool Create(History search)
         {

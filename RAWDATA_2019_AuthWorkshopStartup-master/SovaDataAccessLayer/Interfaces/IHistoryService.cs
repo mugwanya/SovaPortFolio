@@ -7,7 +7,7 @@ namespace SovaDataAccessLayer.Interfaces
 {
     interface IHistoryService
     {
-        //bool Create(History search);
+        bool Create(History search);
         List<History> ReadAll(int userId);
         List<History> Read(int userId, DateTime from, DateTime to);
         bool Delete(int userId, DateTime timestamp);
