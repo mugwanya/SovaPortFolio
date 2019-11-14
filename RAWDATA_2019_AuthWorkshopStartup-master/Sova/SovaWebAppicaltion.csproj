@@ -19,8 +19,4 @@
     <ProjectReference Include="..\SovaDataAccessLayer\SovaDataAccessLayer.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controller\QA_Controllers\" />
-  </ItemGroup>
-
 </Project>
