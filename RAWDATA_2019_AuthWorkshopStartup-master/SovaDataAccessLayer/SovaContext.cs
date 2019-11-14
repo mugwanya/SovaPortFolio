@@ -79,7 +79,7 @@ namespace SovaDataAccessLayer
             modelBuilder.Entity<FrameworkTables.User>().ToTable("users", "Framework");
             modelBuilder.Entity<FrameworkTables.User>().Property(m => m.id).HasColumnName("id");
             modelBuilder.Entity<FrameworkTables.User>().Property(m => m.username).HasColumnName("username");
-
+            
             modelBuilder.Entity<Note>().ToTable("notes", "Framework");
             modelBuilder.Entity<Note>().Property(m => m.id).HasColumnName("id");
             modelBuilder.Entity<Note>().Property(m => m.markingid).HasColumnName("markingid");
@@ -91,7 +91,5 @@ namespace SovaDataAccessLayer
             modelBuilder.Entity<Marking>().Property(m => m.userid).HasColumnName("userid");
             modelBuilder.Entity<Marking>().Property(m => m.postcommentsid).HasColumnName("postcommentsid");
         }
-
-
     }
 }

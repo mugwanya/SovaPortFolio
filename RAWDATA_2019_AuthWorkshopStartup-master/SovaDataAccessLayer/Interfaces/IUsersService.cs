@@ -7,11 +7,12 @@ namespace SovaDataAccessLayer.Interfaces
 {
     interface IUsersService
     {
-        User Create(User user);
-        List<FrameworkTables.User> ReadAll();
+        void CreateUser(FrameworkTables.User user);
+        List<FrameworkTables.User> GetUsers();
         List<FrameworkTables.User> Read(string username);
-        List<FrameworkTables.User> Read(int id);
-        User Update(int id);
-        bool Delete(int id);
+        bool UserExcist(int userId);
+        FrameworkTables.User GetUser(int userId);
+        void UpdateUser(FrameworkTables.User user);
+        bool DeleteUser(int userId);
     }
 }
