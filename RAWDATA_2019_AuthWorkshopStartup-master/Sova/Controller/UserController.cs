@@ -24,7 +24,6 @@ namespace Sova.Controller
         {
             var users = _dataService.GetUsers();
             return Ok(users);
-
         }
 
         [HttpGet("{userId}")]

@@ -127,10 +127,7 @@ namespace SovaDataAccessLayer
         public List<User> GetUsers()
         {
             SovaContext db = new SovaContext();
-
-            var s = db.Users.ToList();
-
-            return s;
+            return db.Users.ToList();
         }
 
         //Get a post by Id
@@ -150,10 +147,7 @@ namespace SovaDataAccessLayer
         public List<LinkPost> GetLinkPostId()
         {
             SovaContext db = new SovaContext();
-
-            var s = db.LinkPosts.ToList();
-
-            return s;
+            return db.LinkPosts.ToList();
         }
 
 
