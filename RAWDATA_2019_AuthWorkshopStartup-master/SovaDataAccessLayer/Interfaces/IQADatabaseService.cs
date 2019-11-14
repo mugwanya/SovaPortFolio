@@ -8,20 +8,43 @@ namespace SovaDataAccessLayer
 {
    public interface IQADatabaseService
     {
+        ///////////////////////
+        ///Comments
+        ///
         IList<Comment> GetComments(PagingAttributes pagingAttributes);
-
-        List<User> GetUsers();
-
-        List<Post>GetPosts();
-
-        List<LinkPost> GetLinkPostId();
-
-        User GetUser(int userId);
         Comment GetComment(int commentId);
         void CreateComment(Comment comment);
         bool CommentExcist(int commentId);
         void UpdateComment(Comment comment);
         bool DeleteComment(int commentId);
+
+        ///////////////////////
+
+        // Posts 
+        List<Post> GetPosts();
+        Post GetPost(int postId);
+        void CreatePost(Post post);
+        bool PostExcist(int postId);
+        void UpdatePost(Post post);
+        bool DeletePost(int postId);
+
+        // Users 
+        //       
+        List<User> GetUsers();
+
+        User GetUser(int userId);
+
+        ///////////////////////
+
+        // LinkPosts 
+
+        /////////////////////// 
+
+        List<LinkPost> GetLinkPostId();
+
+        // Gets Number Of Comments 
+
+        /////////////////////// 
 
         int NumberOfComments();
     }
