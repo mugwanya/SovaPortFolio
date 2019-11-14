@@ -19,7 +19,6 @@ namespace Sova.Controller
             _dataService = dataService;
         }
 
-
         [HttpGet]
         public ActionResult<List<User>> GetUsers()
         {
