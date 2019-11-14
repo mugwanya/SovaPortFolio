@@ -9,7 +9,7 @@ using SovaDataAccessLayer;
 namespace Sova.Controller
 {
     [ApiController]
-    [Route("api/users")]
+    [Route("api/QA/users")]
     public class UserController : ControllerBase
     {
         IQADatabaseService _dataService;
@@ -19,13 +19,11 @@ namespace Sova.Controller
             _dataService = dataService;
         }
 
-
         [HttpGet]
         public ActionResult<List<User>> GetUsers()
         {
             var users = _dataService.GetUsers();
             return Ok(users);
-
         }
 
         [HttpGet("{userId}")]
