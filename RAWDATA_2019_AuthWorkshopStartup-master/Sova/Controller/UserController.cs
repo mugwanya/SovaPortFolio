@@ -9,7 +9,7 @@ using SovaDataAccessLayer;
 namespace Sova.Controller
 {
     [ApiController]
-    [Route("api/users")]
+    [Route("api/QA/users")]
     public class UserController : ControllerBase
     {
         IQADatabaseService _dataService;

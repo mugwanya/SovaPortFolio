@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace SovaWebAppicaltion.Controller
 {
     [ApiController]
-    [Route("api/history")]
+    [Route("api/QA/history")]
     public class HistoryController : ControllerBase
     {
         // GET: api/history

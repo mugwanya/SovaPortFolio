@@ -10,7 +10,7 @@ namespace Sova.Controller
 {
 
     [ApiController]
-    [Route("api/comments")]
+    [Route("api/QA/comments")]
     public class CommentController : ControllerBase
     {
 

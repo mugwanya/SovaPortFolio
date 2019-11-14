@@ -9,7 +9,7 @@ using SovaDataAccessLayer;
 namespace Sova.Controller
 {
     [ApiController]
-    [Route("api/linkpost")]
+    [Route("api/QA/linkpost")]
     public class LinkPostController : ControllerBase
     {
         IQADatabaseService _dataService;

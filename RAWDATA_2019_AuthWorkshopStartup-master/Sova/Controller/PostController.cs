@@ -10,7 +10,7 @@ namespace Sova.Controller
 {
 
     [ApiController]
-    [Route("api/posts")]
+    [Route("api/QA/posts")]
     public class PostController : ControllerBase
     {
         IQADatabaseService _dataService;
