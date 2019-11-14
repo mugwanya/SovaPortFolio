@@ -5,10 +5,10 @@ using System.Text;
 
 namespace SovaDataAccessLayer.FrameworkTables
 {
-    class History
+    public class History
     {
         public int userid { get; set; }
-        public NpgsqlDateTime timestamped { get; set; }
+        public DateTime timestamped { get; set; }
         public string searchquery { get; set; }
     }
 }
