@@ -4,11 +4,10 @@ using System.Text;
 
 namespace SovaDataAccessLayer.FrameworkTables
 {
-    class Notes
+    public class Marking
     {
         public int id { get; set; }
-        public int markingid { get; set; }
         public int userid { get; set; }
-        public string note { get; set; }
+        public int postcommentsid { get; set; }
     }
 }

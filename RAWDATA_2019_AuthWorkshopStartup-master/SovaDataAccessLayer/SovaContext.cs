@@ -1,11 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-
+using SovaDataAccessLayer.FrameworkTables;
 
 namespace SovaDataAccessLayer
 {
     // Context Class
     public class SovaContext : DbContext
     {
+        //QA model
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Inverted_Index> Inverted_Indexes { get; set; }
         public DbSet<LinkPost> LinkPosts { get; set; }
@@ -14,6 +15,12 @@ namespace SovaDataAccessLayer
         public DbSet<User> Users { get; set; }
         public DbSet<Word> Words { get; set; }
         public DbSet<Wi> Wis { get; set; }
+
+        //Framework model
+        public DbSet<History> Histories { get; set; }
+        public DbSet<Marking> Markings { get; set; }
+        public DbSet<Note> Notes { get; set; }
+        public DbSet<FrameworkTables.User> FrameworkUsers { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -61,7 +68,27 @@ namespace SovaDataAccessLayer
 
             modelBuilder.Entity<LinkPost>().ToTable("linkpost", "QA");
             modelBuilder.Entity<LinkPost>().Property(m => m.LinkPostId).HasColumnName("postid");
-            modelBuilder.Entity<LinkPost>().Property(m => m.PostId).HasColumnName("linkpostid");          
+            modelBuilder.Entity<LinkPost>().Property(m => m.PostId).HasColumnName("linkpostid");
+
+            modelBuilder.Entity<History>().ToTable("history", "Framework");
+            modelBuilder.Entity<History>().Property(m => m.userid).HasColumnName("userid");
+            modelBuilder.Entity<History>().Property(m => m.timestamped).HasColumnName("timestamped");
+            modelBuilder.Entity<History>().Property(m => m.searchquery).HasColumnName("searchquery");
+
+            modelBuilder.Entity<FrameworkTables.User>().ToTable("users", "Framework");
+            modelBuilder.Entity<FrameworkTables.User>().Property(m => m.id).HasColumnName("id");
+            modelBuilder.Entity<FrameworkTables.User>().Property(m => m.username).HasColumnName("username");
+
+            modelBuilder.Entity<Note>().ToTable("notes", "Framework");
+            modelBuilder.Entity<Note>().Property(m => m.id).HasColumnName("id");
+            modelBuilder.Entity<Note>().Property(m => m.markingid).HasColumnName("markingid");
+            modelBuilder.Entity<Note>().Property(m => m.userid).HasColumnName("userid");
+            modelBuilder.Entity<Note>().Property(m => m.note).HasColumnName("note");
+
+            modelBuilder.Entity<Marking>().ToTable("markings", "Framework");
+            modelBuilder.Entity<Marking>().Property(m => m.id).HasColumnName("id");
+            modelBuilder.Entity<Marking>().Property(m => m.userid).HasColumnName("userid");
+            modelBuilder.Entity<Marking>().Property(m => m.postcommentsid).HasColumnName("postcommentsid");
         }
 
 

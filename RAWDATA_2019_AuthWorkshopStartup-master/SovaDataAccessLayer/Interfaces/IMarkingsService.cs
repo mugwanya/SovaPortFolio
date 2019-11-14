@@ -7,8 +7,11 @@ namespace SovaDataAccessLayer.Interfaces
 {
     interface IMarkingsService
     {
-        bool Create(Markings marking);
-        List<Markings> ReadAll(int userid);
-//        List<Markings> Read(int userid, int );
+        Marking Create(Marking marking);
+        List<Marking> ReadAll(int userid);
+        List<Marking> Read(int userid, int postcommentsid);
+        List<Marking> Read(int id);
+        Marking Update(int id);
+        bool Delete(int id);
     }
 }
