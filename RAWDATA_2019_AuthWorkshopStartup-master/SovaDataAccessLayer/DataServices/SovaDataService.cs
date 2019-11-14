@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SovaDataAccessLayer.QATables;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,10 +15,13 @@ namespace SovaDataAccessLayer
         /////////////////////// 
 
         // Gets All Comments
-        public List<Comment> GetComments()
+        public IList<Comment> GetComments(PagingAttributes pagingAttributes)
         {
             SovaContext db = new SovaContext();
-            return db.Comments.ToList();
+            return db.Comments.Skip(pagingAttributes.Page * pagingAttributes.PageSize)
+                .Take(pagingAttributes.PageSize)
+                .ToList();
+            
         }
 
         public Comment GetComment(int commentId)
@@ -112,6 +116,12 @@ namespace SovaDataAccessLayer
             return s;
         }
 
+        public int NumberOfComments()
+        {
+            var db = new SovaContext();
+            return db.Comments.Count();
+        }
+       
 
 
 

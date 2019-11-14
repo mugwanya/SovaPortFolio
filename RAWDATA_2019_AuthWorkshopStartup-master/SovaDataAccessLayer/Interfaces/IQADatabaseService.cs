@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SovaDataAccessLayer.QATables;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ namespace SovaDataAccessLayer
 {
    public interface IQADatabaseService
     {
-        List<Comment> GetComments();
+        IList<Comment> GetComments(PagingAttributes pagingAttributes);
 
         List<User> GetUsers();
 
@@ -21,5 +22,7 @@ namespace SovaDataAccessLayer
         bool CommentExcist(int commentId);
         void UpdateComment(Comment comment);
         bool DeleteComment(int commentId);
+
+        int NumberOfComments();
     }
 }

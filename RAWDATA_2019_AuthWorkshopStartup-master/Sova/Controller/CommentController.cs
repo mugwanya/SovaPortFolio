@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SovaDataAccessLayer;
+using SovaDataAccessLayer.QATables;
 
 namespace Sova.Controller
 {
@@ -15,18 +17,21 @@ namespace Sova.Controller
     {
 
         IQADatabaseService _dataService;
+        IMapper _mapper;
 
-        public CommentController (IQADatabaseService dataService)
+        public CommentController (IQADatabaseService dataService, IMapper mapper)
         {
             _dataService = dataService;
+            _mapper = mapper;
         }
 
         //READ
-        [HttpGet]
-        public ActionResult<List<Comment>> GetComments()
+        [HttpGet(Name = nameof(GetComments))]
+        public ActionResult GetComments([FromQuery]PagingAttributes pagingAttributes)
         {
-            var comments = _dataService.GetComments();
-            return Ok(comments);
+            var comments = _dataService.GetComments(pagingAttributes);
+            var result = CreateResult(comments, pagingAttributes);
+            return Ok(result);
 
         }
 
@@ -68,6 +73,40 @@ namespace Sova.Controller
                 return NoContent();
             }
             return NotFound();
+        }
+
+        private CommentDto CreateCommentDto(Comment comment)
+        {
+            var dto = _mapper.Map<CommentDto>(comment);
+            dto.Link = Url.Link(
+                    nameof(GetComment),
+                    new { commentId = comment.Id });
+            return dto;
+        }
+
+
+        private object CreateResult(IEnumerable<Comment> comments, PagingAttributes attr)
+        {
+            var totalItems = _dataService.NumberOfComments();
+            var numberOfPages = Math.Ceiling((double)totalItems / attr.PageSize);
+
+            var prev = attr.Page > 0 ? CreatePagingLink(attr.Page - 1, attr.PageSize): null;
+
+            var next = attr.Page < numberOfPages - 1 ? CreatePagingLink(attr.Page + 1, attr.PageSize): null;
+
+            return new
+            {
+                totalItems,
+                numberOfPages,
+                prev,
+                next,
+                items = comments.Select(CreateCommentDto)
+            };
+        }
+
+        private string CreatePagingLink(int page, int pageSize)
+        {
+            return Url.Link(nameof(GetComments), new { page, pageSize });
         }
     }
 }

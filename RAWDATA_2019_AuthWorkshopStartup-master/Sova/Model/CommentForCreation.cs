@@ -1,12 +1,11 @@
-﻿using NpgsqlTypes;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace SovaDataAccessLayer
+namespace SovaWebAppicaltion.Model
 {
-    // Comment Class
-    public class Comment
+    public class CommentForCreation
     {
         public int Id { get; set; }
 
@@ -20,6 +19,6 @@ namespace SovaDataAccessLayer
 
         public int UserId { get; set; }
 
-       
+        public string Link { get; set; }
     }
 }
