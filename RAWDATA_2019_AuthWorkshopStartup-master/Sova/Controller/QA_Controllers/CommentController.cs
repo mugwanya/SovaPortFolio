@@ -35,7 +35,7 @@ namespace Sova.Controller
 
         }
 
-        [HttpGet("{commentId}")]
+        [HttpGet("{commentId}", Name = nameof(GetComment))]
         public ActionResult GetComment (int commentId)
         {
             var comment = _dataService.GetComment(commentId);
@@ -49,6 +49,7 @@ namespace Sova.Controller
         {
             _dataService.CreateComment(comment);
             return Created("", comment);
+
         }
 
         //UPDATE
@@ -104,6 +105,7 @@ namespace Sova.Controller
             };
         }
 
+        // This Method Creates 
         private string CreatePagingLink(int page, int pageSize)
         {
             return Url.Link(nameof(GetComments), new { page, pageSize });
