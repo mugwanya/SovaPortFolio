@@ -9,7 +9,6 @@ namespace SovaDataAccessLayer.Interfaces
     {
         List<History> ReadAll(int userId);
         List<History> Read(int userId, DateTime from, DateTime to);
-        List<History> Read(int id);
         bool Delete(History entry);
     }
 }

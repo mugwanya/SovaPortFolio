@@ -28,17 +28,15 @@ namespace SovaDataAccessLayer.DataServices
         public List<History> Read(int userId, DateTime from, DateTime to)
         {
             SovaContext db = new SovaContext();
-            return db.Histories.ToList();
-        }
 
-        public List<History> Read(int id)
-        {
-            throw new NotImplementedException();
+            return db.Histories.Where(x => x.timestamped > from && x.timestamped < to).Select(x => x).ToList();
         }
 
         public List<History> ReadAll(int userId)
         {
-            throw new NotImplementedException();
+            SovaContext db = new SovaContext();
+
+            return db.Histories.Where(x => x.userid == userId).Select(x => x).ToList();
         }
     }
 }
