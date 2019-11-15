@@ -85,7 +85,6 @@ namespace Sova.Controller
             return dto;
         }
 
-
         private object CreateResult(IEnumerable<Comment> comments, PagingAttributes attr)
         {
             var totalItems = _dataService.NumberOfComments();
@@ -105,7 +104,6 @@ namespace Sova.Controller
             };
         }
 
-        // This Method Creates 
         private string CreatePagingLink(int page, int pageSize)
         {
             return Url.Link(nameof(GetComments), new { page, pageSize });

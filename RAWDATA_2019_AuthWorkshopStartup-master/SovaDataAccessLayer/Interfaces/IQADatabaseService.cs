@@ -21,7 +21,7 @@ namespace SovaDataAccessLayer
         ///////////////////////
 
         // Posts 
-        List<Post> GetPosts();
+        IList<Post> GetPosts(PagingAttributes pagingAttributes);
         Post GetPost(int postId);
         void CreatePost(Post post);
         bool PostExcist(int postId);
@@ -47,5 +47,7 @@ namespace SovaDataAccessLayer
         /////////////////////// 
 
         int NumberOfComments();
+
+        int NumberOfPosts();
     }
 }

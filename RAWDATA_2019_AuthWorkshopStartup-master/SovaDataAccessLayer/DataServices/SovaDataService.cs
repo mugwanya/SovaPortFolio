@@ -73,10 +73,12 @@ namespace SovaDataAccessLayer
         /////////////////////// 
 
         // Gets All Posts
-        public List<Post> GetPosts()
+       public IList<Post> GetPosts(PagingAttributes pagingAttributes)
         {
             SovaContext db = new SovaContext();
-            return db.Posts.ToList();
+            return db.Posts.Skip(pagingAttributes.Page * pagingAttributes.PageSize)
+                .Take(pagingAttributes.PageSize)
+                .ToList();
         }
 
         //Get a post by Id
@@ -154,12 +156,20 @@ namespace SovaDataAccessLayer
             return db.LinkPosts.ToList();
         }
 
+        // Gets Number Of Comments
         public int NumberOfComments()
         {
             var db = new SovaContext();
             return db.Comments.Count();
         }
-       
+
+        // Gets Number Of Posts
+        public int NumberOfPosts()
+        {
+            var db = new SovaContext();
+            return db.Posts.Count();
+        }
+
 
 
 

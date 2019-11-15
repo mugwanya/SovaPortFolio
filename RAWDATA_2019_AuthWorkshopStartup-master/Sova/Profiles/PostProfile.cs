@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace SovaWebAppicaltion.Profiles
 {
-    public class CommentProfile : Profile
+    public class PostProfile : Profile
     {
-        public CommentProfile()
+        public PostProfile()
         {
-            CreateMap<Comment, CommentDto>();
-        
+            CreateMap<Post, PostDto>();
+       
         }
     }
 }
