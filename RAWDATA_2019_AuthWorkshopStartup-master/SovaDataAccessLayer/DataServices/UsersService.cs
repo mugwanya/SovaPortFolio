@@ -54,7 +54,7 @@ namespace SovaDataAccessLayer
 
         public bool UserExcist(int userId)
         {
-            throw new NotImplementedException();
+            return GetUser(userId) != null;
         }
     }
 }

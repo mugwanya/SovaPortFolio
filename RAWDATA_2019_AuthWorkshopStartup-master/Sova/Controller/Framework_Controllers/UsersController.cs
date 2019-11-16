@@ -34,5 +34,28 @@ namespace SovaWebAppicaltion.Controller.Framework_Controllers
             if (user == null) return NotFound();
             return Ok(user);
         }
+
+        [HttpPost]
+        public ActionResult CreateUser([FromBody] SovaDataAccessLayer.FrameworkTables.User user)
+        {
+            _dataService.CreateUser(user);
+            return Created("", user);
+        }
+
+        [HttpPut("{userId}")]
+        public ActionResult UpdateUser(int userId, SovaDataAccessLayer.FrameworkTables.User user)
+        {
+            if (!_dataService.UserExcist(userId)) return NotFound();
+            user.id = userId;
+            _dataService.UpdateUser(user);
+            return NoContent();
+        }
+
+        [HttpDelete("{userId}")]
+        public ActionResult DeleteUser (int userId)
+        {
+            if (_dataService.DeleteUser(userId)) return NoContent();
+            return NotFound();
+        }
     }
 }
