@@ -19,7 +19,7 @@ namespace SovaDataAccessLayer
         //Framework model
         public DbSet<History> Histories { get; set; }
         public DbSet<Marking> Markings { get; set; }
-        public DbSet<Note> Notes { get; set; }
+        public DbSet<Notes> Notes { get; set; }
         public DbSet<FrameworkTables.User> FrameworkUsers { get; set; }
 
 
@@ -80,11 +80,11 @@ namespace SovaDataAccessLayer
             modelBuilder.Entity<FrameworkTables.User>().Property(m => m.id).HasColumnName("id");
             modelBuilder.Entity<FrameworkTables.User>().Property(m => m.username).HasColumnName("username");
             
-            modelBuilder.Entity<Note>().ToTable("notes", "Framework");
-            modelBuilder.Entity<Note>().Property(m => m.id).HasColumnName("id");
-            modelBuilder.Entity<Note>().Property(m => m.markingid).HasColumnName("markingid");
-            modelBuilder.Entity<Note>().Property(m => m.userid).HasColumnName("userid");
-            modelBuilder.Entity<Note>().Property(m => m.note).HasColumnName("note");
+            modelBuilder.Entity<Notes>().ToTable("notes", "Framework");
+            modelBuilder.Entity<Notes>().Property(m => m.Id).HasColumnName("id");
+            modelBuilder.Entity<Notes>().Property(m => m.Markingid).HasColumnName("markingid");
+            modelBuilder.Entity<Notes>().Property(m => m.Userid).HasColumnName("userid");
+            modelBuilder.Entity<Notes>().Property(m => m.Note).HasColumnName("note");
 
             modelBuilder.Entity<Marking>().ToTable("markings", "Framework");
             modelBuilder.Entity<Marking>().Property(m => m.id).HasColumnName("id");

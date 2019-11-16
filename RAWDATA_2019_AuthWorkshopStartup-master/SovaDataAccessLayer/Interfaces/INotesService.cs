@@ -5,14 +5,14 @@ using System.Text;
 
 namespace SovaDataAccessLayer.Interfaces
 {
-    interface INotesService
+    public interface INotesService
     {
-        void Create(Note note);
-        List<Note> ReadAll(int userid);
-        List<Note> Read(int userId, int markingId);
+        void Create(Notes note);
+        List<Notes> ReadAll(int userid);
+        List<Notes> Read(int userId, int markingId);
         //List<Note> Read(int userid, string query);
-        Note Read(int noteId);
-        void Update(Note updateNote);
+        Notes Read(int noteId);
+        void Update(Notes updateNote);
         bool Delete(int noteId);
     }
 }

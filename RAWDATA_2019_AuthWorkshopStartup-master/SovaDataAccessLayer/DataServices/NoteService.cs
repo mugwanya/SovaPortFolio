@@ -9,10 +9,10 @@ namespace SovaDataAccessLayer.DataServices
 {
     class NoteService : INotesService
     {
-        public void Create(Note note)
+        public void Create(Notes note)
         {
             SovaContext db = new SovaContext();
-            note.id = db.Notes.Max(x => x.id) + 1;
+            note.Id = db.Notes.Max(x => x.Id) + 1;
             db.Add(note);
             db.SaveChanges();
         }
@@ -27,29 +27,29 @@ namespace SovaDataAccessLayer.DataServices
             return true;
         }
 
-        public List<Note> Read(int userId, int markingId)
+        public List<Notes> Read(int userId, int markingId)
         {
             SovaContext db = new SovaContext();
             return db.Notes
-                .Where(x => x.userid == userId)
-                .Where(x => x.markingid == markingId)
+                .Where(x => x.Userid == userId)
+                .Where(x => x.Markingid == markingId)
                 .Select(x => x).ToList();
         }
 
-        public Note Read(int noteId)
+        public Notes Read(int noteId)
         {
             SovaContext db = new SovaContext();
             return db.Notes.Find(noteId);
         }
 
-        public List<Note> ReadAll(int userid)
+        public List<Notes> ReadAll(int userid)
         {
             SovaContext db = new SovaContext();
             return db.Notes
-                .Where(x => x.userid == userid).ToList();
+                .Where(x => x.Userid == userid).ToList();
         }
 
-        public void Update(Note updateNote)
+        public void Update(Notes updateNote)
         {
             SovaContext db = new SovaContext();
             db.Update(updateNote);
