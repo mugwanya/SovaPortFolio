@@ -30,7 +30,7 @@ namespace Sova
             services.AddSingleton<IQADatabaseService, SovaDataService>();
             services.AddSingleton<INotesService, NoteService>();
             services.AddSingleton<IUsersService, UsersService>();
-
+            services.AddSingleton<IMarkingsService, MarkingsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

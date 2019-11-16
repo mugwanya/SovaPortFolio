@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SovaDataAccessLayer.Interfaces
 {
-    interface IMarkingsService
+    public interface IMarkingsService
     {
         void CreateMarking(Marking marking);
         List<Marking> GetMarkins(int userid);
