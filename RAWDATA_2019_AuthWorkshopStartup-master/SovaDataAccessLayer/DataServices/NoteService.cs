@@ -7,8 +7,17 @@ using System.Text;
 
 namespace SovaDataAccessLayer.DataServices
 {
-    class NoteService : INotesService
+    public class NoteService : INotesService
     {
+        public bool NoteExcists (int noteId)
+        {
+            return Read(noteId) != null;
+        }
+        public List<Notes> ReadAllNotes()
+        {
+            SovaContext db = new SovaContext();
+            return db.Notes.ToList();
+        }
         public void Create(Notes note)
         {
             SovaContext db = new SovaContext();

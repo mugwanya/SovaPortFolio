@@ -76,6 +76,7 @@ namespace Sova.Controller
             return NotFound();
         }
 
+        // HELPER FUNCTIONS
         private CommentDto CreateCommentDto(Comment comment)
         {
             var dto = _mapper.Map<CommentDto>(comment);

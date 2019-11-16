@@ -10,6 +10,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Sova.Controller;
 using SovaDataAccessLayer;
+using SovaDataAccessLayer.DataServices;
+using SovaDataAccessLayer.Interfaces;
 
 namespace Sova
 {
@@ -26,7 +28,7 @@ namespace Sova
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddSingleton<IQADatabaseService, SovaDataService>();
-     
+            services.AddSingleton<INotesService, NoteService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
