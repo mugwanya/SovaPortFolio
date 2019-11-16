@@ -7,7 +7,7 @@ using System.Text;
 
 namespace SovaDataAccessLayer
 {
-    public class UserService : IUsersService
+    public class UsersService : IUsersService
     {
         
         public void CreateUser(FrameworkTables.User user)

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SovaDataAccessLayer.Interfaces
 {
-    interface IUsersService
+    public interface IUsersService
     {
         void CreateUser(FrameworkTables.User user);
         List<FrameworkTables.User> GetUsers();
