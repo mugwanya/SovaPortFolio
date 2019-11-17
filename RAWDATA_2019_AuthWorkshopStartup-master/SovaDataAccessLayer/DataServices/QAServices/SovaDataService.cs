@@ -181,7 +181,7 @@ namespace SovaDataAccessLayer
             return db.LinkPosts.Count();
         }
 
-        public IList<LinkPost> GetLinkPostId(PagingAttributes pagingAttributes)
+        public IList<LinkPost> GetLinkPostIds(PagingAttributes pagingAttributes)
         {
             SovaContext db = new SovaContext();
             return db.LinkPosts.Skip(pagingAttributes.Page * pagingAttributes.PageSize)
@@ -190,15 +190,11 @@ namespace SovaDataAccessLayer
 
         }
 
-
-
-
-
-
-
-
-
-
+        public LinkPost GetLinkPostId(int linkId)
+        {
+            SovaContext db = new SovaContext();
+            return db.LinkPosts.Find(linkId);
+        }
 
         /*// Gets All Words (TEST)
         public List<Wi> GetWords()

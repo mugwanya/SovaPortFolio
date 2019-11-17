@@ -40,7 +40,9 @@ namespace SovaDataAccessLayer
 
         /////////////////////// 
 
-        IList<LinkPost> GetLinkPostId(PagingAttributes pagingAttributes);
+        IList<LinkPost> GetLinkPostIds(PagingAttributes pagingAttributes);
+
+        LinkPost GetLinkPostId(int linkId)
 
         // Gets Number Of Comments , Posts, Users
 
