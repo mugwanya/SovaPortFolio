@@ -6,7 +6,6 @@ namespace SovaDataAccessLayer.QATables
 {
    public class CommentDto
     {     
-         
             public int PostId { get; set; }
 
             public int Score { get; set; }

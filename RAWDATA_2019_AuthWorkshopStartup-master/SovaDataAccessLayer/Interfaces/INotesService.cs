@@ -1,4 +1,5 @@
 ﻿using SovaDataAccessLayer.FrameworkTables;
+using SovaDataAccessLayer.QATables;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,7 +8,9 @@ namespace SovaDataAccessLayer.Interfaces
 {
     public interface INotesService
     {
-        List<Notes> ReadAllNotes();
+        //List<Notes> ReadAllNotes();
+        List<Notes> ReadAllNotes(PagingAttributes pagingAttributes);
+        int numOfPages();
         void Create(Notes note);
         List<Notes> ReadAll(int userid);
 
