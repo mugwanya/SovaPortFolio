@@ -13,7 +13,7 @@ namespace SovaWebAppicaltion.Profiles
         public NoteProfile()
         {
             CreateMap<Notes, NoteDto>();
-            CreateMap<Notes, NoteForCreation>();
+            CreateMap<NoteForCreation, Notes>();
         }
     }
 }

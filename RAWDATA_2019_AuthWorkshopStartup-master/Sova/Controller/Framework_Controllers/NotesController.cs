@@ -58,7 +58,7 @@ namespace SovaWebAppicaltion.Controller.Framework_Controllers
             _dataService.Create(note);
             return CreatedAtRoute(
                 nameof(GetNote),
-                new { noteId = note.Id },
+                new { noteId = note.Id},
                 CreateNoteDto(note));
         }
 
@@ -100,7 +100,6 @@ namespace SovaWebAppicaltion.Controller.Framework_Controllers
                 items = notes.Select(CreateNoteDto)
             };
         }
-
         private NoteDto CreateNoteDto(Notes note)
         {
             var dto = _mapper.Map<NoteDto>(note);
