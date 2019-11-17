@@ -77,8 +77,8 @@ namespace SovaDataAccessLayer
             modelBuilder.Entity<History>().HasKey(m => new { m.userid, m.timestamped});
 
             modelBuilder.Entity<FrameworkTables.User>().ToTable("users", "Framework");
-            modelBuilder.Entity<FrameworkTables.User>().Property(m => m.id).HasColumnName("id");
-            modelBuilder.Entity<FrameworkTables.User>().Property(m => m.username).HasColumnName("username");
+            modelBuilder.Entity<FrameworkTables.User>().Property(m => m.Id).HasColumnName("id");
+            modelBuilder.Entity<FrameworkTables.User>().Property(m => m.Username).HasColumnName("username");
             
             modelBuilder.Entity<Notes>().ToTable("notes", "Framework");
             modelBuilder.Entity<Notes>().Property(m => m.Id).HasColumnName("id");
