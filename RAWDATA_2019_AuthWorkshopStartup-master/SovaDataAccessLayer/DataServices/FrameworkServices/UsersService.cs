@@ -1,5 +1,6 @@
 ﻿using SovaDataAccessLayer.FrameworkTables;
 using SovaDataAccessLayer.Interfaces;
+using SovaDataAccessLayer.QATables;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,15 @@ namespace SovaDataAccessLayer
 {
     public class UsersService : IUsersService
     {
-        
+        public int numOfPages()
+        {
+            SovaContext db = new SovaContext();
+            return db.FrameworkUsers.Count();
+        }
         public void CreateUser(FrameworkTables.User user)
         {
             SovaContext db = new SovaContext();
-            user.id = db.FrameworkUsers.Max(x => x.id) + 1;
+            user.Id = db.FrameworkUsers.Max(x => x.Id) + 1;
             db.Add(user);
             db.SaveChanges();
         }
@@ -34,10 +39,12 @@ namespace SovaDataAccessLayer
             return db.FrameworkUsers.Find(userId);
         }
 
-        public List<FrameworkTables.User> GetUsers()
+        public List<FrameworkTables.User> GetUsers(PagingAttributes pagingAttributes)
         {
             SovaContext db = new SovaContext();
-            return db.FrameworkUsers.ToList();
+            return db.FrameworkUsers
+                .Skip(pagingAttributes.Page * pagingAttributes.PageSize)
+                .Take(pagingAttributes.PageSize).ToList();
         }
 
         public List<FrameworkTables.User> Read(string username)

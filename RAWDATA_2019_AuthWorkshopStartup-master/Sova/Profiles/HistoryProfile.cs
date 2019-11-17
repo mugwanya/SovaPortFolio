@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
-using SovaDataAccessLayer;
-using SovaDataAccessLayer.QATables;
+using SovaDataAccessLayer.FrameworkTables;
 using SovaWebAppicaltion.Model;
 using System;
 using System.Collections.Generic;
@@ -9,12 +8,11 @@ using System.Threading.Tasks;
 
 namespace SovaWebAppicaltion.Profiles
 {
-    public class CommentProfile : Profile
+    public class HistoryProfile : Profile
     {
-        public CommentProfile() 
+        public HistoryProfile()
         {
-            CreateMap<Comment, CommentDto>();
-        
+            CreateMap<History, HistoryModel>();
         }
     }
 }

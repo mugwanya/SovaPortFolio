@@ -1,5 +1,6 @@
 ﻿using SovaDataAccessLayer.FrameworkTables;
 using SovaDataAccessLayer.Interfaces;
+using SovaDataAccessLayer.QATables;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,14 @@ namespace SovaDataAccessLayer.DataServices
         public void Create(Notes note)
         {
             SovaContext db = new SovaContext();
-            note.Id = db.Notes.Max(x => x.Id) + 1;
+            var tmp = db.Notes.ToList();
+            if (tmp.Count == 0)
+            {
+                note.Id = 1;
+            } else
+            {
+                note.Id = db.Notes.Max(x => x.Id) + 1;
+            }
             db.Add(note);
             db.SaveChanges();
         }
@@ -51,11 +59,13 @@ namespace SovaDataAccessLayer.DataServices
             return db.Notes.Find(noteId);
         }
 
-        public List<Notes> ReadAll(int userid)
+        public List<Notes> ReadAll(int userid, PagingAttributes pagingAttributes)
         {
             SovaContext db = new SovaContext();
             return db.Notes
-                .Where(x => x.Userid == userid).ToList();
+                .Where(x => x.Userid == userid)
+                .Skip(pagingAttributes.Page * pagingAttributes.PageSize)
+                .Take(pagingAttributes.PageSize).ToList();
         }
 
         public void Update(Notes updateNote)
@@ -63,6 +73,20 @@ namespace SovaDataAccessLayer.DataServices
             SovaContext db = new SovaContext();
             db.Update(updateNote);
             db.SaveChanges();
+        }
+
+        public List<Notes> ReadAllNotes(PagingAttributes pagingAttributes)
+        {
+            SovaContext db = new SovaContext();
+            return db.Notes
+                .Skip(pagingAttributes.Page * pagingAttributes.PageSize)
+                .Take(pagingAttributes.PageSize).ToList();
+        }
+
+        public int numOfPages()
+        {
+            SovaContext db = new SovaContext();
+            return db.Notes.Count();
         }
     }
 }
