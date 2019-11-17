@@ -129,12 +129,13 @@ namespace SovaDataAccessLayer
         // 
         /////////////////////// 
 
-        // Gets All GetUsers
-        public List<User> GetUsers()
+        // Gets All GetUsers  
+        public IList<User> GetUsers(PagingAttributes pagingAttributes)
         {
             SovaContext db = new SovaContext();
             return db.Users.ToList();
         }
+
 
         //Get a post by Id
         public User GetUser(int userId)
@@ -170,6 +171,7 @@ namespace SovaDataAccessLayer
             return db.Posts.Count();
         }
 
+      
 
 
 
