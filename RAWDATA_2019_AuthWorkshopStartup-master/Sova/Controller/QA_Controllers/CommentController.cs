@@ -86,6 +86,7 @@ namespace Sova.Controller
             return dto;
         }
 
+        // Helper Method
         private object CreateResult(IEnumerable<Comment> comments, PagingAttributes attr)
         {
             var totalItems = _dataService.NumberOfComments();

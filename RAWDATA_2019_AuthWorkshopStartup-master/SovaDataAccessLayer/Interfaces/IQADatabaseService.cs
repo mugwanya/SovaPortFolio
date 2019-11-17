@@ -42,12 +42,14 @@ namespace SovaDataAccessLayer
 
         List<LinkPost> GetLinkPostId();
 
-        // Gets Number Of Comments 
+        // Gets Number Of Comments , Posts, Users
 
         /////////////////////// 
 
         int NumberOfComments();
 
         int NumberOfPosts();
+
+        int NumberOfUsers();
     }
 }
