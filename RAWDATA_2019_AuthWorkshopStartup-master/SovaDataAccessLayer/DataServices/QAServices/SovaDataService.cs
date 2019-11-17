@@ -181,12 +181,6 @@ namespace SovaDataAccessLayer
             return db.LinkPosts.Count();
         }
 
-        public List<LinkPost> GetAllLinkPost() 
-        {
-            SovaContext db = new SovaContext();
-            return db.LinkPosts.ToList();
-        }
-
         public IList<LinkPost> GetLinkPostIds(PagingAttributes pagingAttributes)
         {
             SovaContext db = new SovaContext();
