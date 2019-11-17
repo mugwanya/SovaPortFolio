@@ -8,12 +8,11 @@ using System.Threading.Tasks;
 
 namespace SovaWebAppicaltion.Profiles
 {
-    public class NoteProfile : Profile
+    public class MarkingsProfile : Profile
     {
-        public NoteProfile()
+        public MarkingsProfile()
         {
-            CreateMap<Notes, NoteDto>();
-            CreateMap<Notes, NoteForCreation>();
+            CreateMap<Marking, MarkingsDto>();
         }
     }
 }
