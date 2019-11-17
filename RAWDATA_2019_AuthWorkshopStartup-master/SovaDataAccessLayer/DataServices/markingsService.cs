@@ -7,7 +7,7 @@ using System.Text;
 
 namespace SovaDataAccessLayer.DataServices
 {
-    public class MarkingsService : IMarkingsService
+    public class markingsService : IMarkingsService
     {
         public void CreateMarking(Marking marking)
         {
