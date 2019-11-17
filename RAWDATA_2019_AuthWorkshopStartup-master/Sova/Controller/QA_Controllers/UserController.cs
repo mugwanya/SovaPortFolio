@@ -23,6 +23,7 @@ namespace Sova.Controller
             _dataService = dataService;
             _mapper = mapper;
         }
+       
 
         [HttpGet(Name = nameof(GetUsers))]
         public ActionResult GetUsers([FromQuery]PagingAttributes pagingAttributes)
@@ -55,7 +56,7 @@ namespace Sova.Controller
         }
 
 
-
+        // Helper Method
         private object CreateResult(IEnumerable<User> users, PagingAttributes attr)
         {
             var totalItems = _dataService.NumberOfUsers();
