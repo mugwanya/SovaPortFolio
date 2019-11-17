@@ -23,6 +23,13 @@ namespace Sova.Controller
             _mapper = mapper;
         }
 
+        //[HttpGet]
+        //public ActionResult GetAllLinkPosts()
+        //{
+        //    var allPosts = _dataService.GetAllLinkPost();
+        //    return Ok(allPosts);
+        //}
+
         [HttpGet("{linkPostId}", Name = nameof(GetLinkPostId))]
         public ActionResult GetLinkPostId(int linkPostId)
         {
@@ -31,9 +38,7 @@ namespace Sova.Controller
             return Ok(getLinkPost);
         }
 
-
-      
-        [HttpGet("{linkPostId}", Name = nameof(GetLinkPostIds))]
+        [HttpGet(Name = nameof(GetLinkPostIds))]
         public ActionResult GetLinkPostIds([FromQuery]PagingAttributes pagingAttributes)
         {
             var linkpost = _dataService.GetLinkPostIds(pagingAttributes);

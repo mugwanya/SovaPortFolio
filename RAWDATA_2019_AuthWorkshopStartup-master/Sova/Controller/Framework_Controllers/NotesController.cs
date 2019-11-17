@@ -9,6 +9,7 @@ using SovaDataAccessLayer.FrameworkTables;
 using SovaDataAccessLayer.QATables;
 using SovaWebAppicaltion.Profiles;
 using AutoMapper;
+using SovaWebAppicaltion.Model;
 
 namespace SovaWebAppicaltion.Controller.Framework_Controllers
 {
@@ -51,10 +52,14 @@ namespace SovaWebAppicaltion.Controller.Framework_Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateNotes([FromBody] Notes notes)
+        public ActionResult CreateNotes(NoteForCreation noteDto)
         {
-            _dataService.Create(notes);
-            return Created("", notes);
+            var note = _mapper.Map<Notes>(noteDto);
+            _dataService.Create(note);
+            return CreatedAtRoute(
+                nameof(GetNote),
+                new { noteId = note.Id },
+                CreateNoteDto(note));
         }
 
         [HttpDelete("{noteId}")]
