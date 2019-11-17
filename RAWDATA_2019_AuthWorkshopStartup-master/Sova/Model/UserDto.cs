@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace SovaWebAppicaltion.Model
 {
+    // UserDto
     public class UserDto
     {
         public int Id { get; set; }
