@@ -11,7 +11,7 @@ namespace SovaDataAccessLayer.Interfaces
         int numOfPages();
         List<Marking> GetAllMarkings(PagingAttributes pagingAttributes);
         void CreateMarking(Marking marking);
-        List<Marking> GetMarkings(int userid);
+        List<Marking> GetMarkings(int userid, PagingAttributes pagingAttributes);
         List<Marking> Read(int userid, int postcommentsid);
         Marking GetMarking(int markingId);
         void UpdateMarking(Marking marking);

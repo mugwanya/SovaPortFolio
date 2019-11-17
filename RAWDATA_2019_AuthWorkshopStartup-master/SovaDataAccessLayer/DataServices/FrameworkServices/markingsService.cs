@@ -18,8 +18,8 @@ namespace SovaDataAccessLayer.DataServices
         public void CreateMarking(Marking marking)
         {
             SovaContext db = new SovaContext();
-            var markingsSize = db.Markings.ToList().Count();
-            if (markingsSize < 1)
+            var tmpList = db.Markings.ToList();
+            if (tmpList.Count == 0)
             {
                 marking.Id = 1;
             } else
@@ -46,10 +46,13 @@ namespace SovaDataAccessLayer.DataServices
             return db.Markings.Find(markingId);
         }
 
-        public List<Marking> GetMarkings(int userid)
+        public List<Marking> GetMarkings(int userid, PagingAttributes pagingAttributes)
         {
             SovaContext db = new SovaContext();
-            return db.Markings.Where(x => x.Id == userid).ToList();
+            return db.Markings
+                .Where(x => x.UserId == userid)
+                .Skip(pagingAttributes.Page * pagingAttributes.PageSize)
+                .Take(pagingAttributes.PageSize).ToList();
         }
 
         public bool MarkingsExcist(int markingId)

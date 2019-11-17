@@ -35,7 +35,8 @@ namespace SovaWebAppicaltion.Controller.Framework_Controllers
         }
 
         [HttpGet("usernotes/{userId}", Name = nameof(GetNotesByUserId))]
-        public ActionResult GetNotesByUserId(int userId, [FromQuery]PagingAttributes pagingAttributes)
+        public ActionResult GetNotesByUserId(int userId,
+            [FromQuery]PagingAttributes pagingAttributes)
         {
             var notes = _dataService.ReadAll(userId, pagingAttributes);
             if (notes == null) return NotFound();
@@ -87,9 +88,11 @@ namespace SovaWebAppicaltion.Controller.Framework_Controllers
             var totalItems = _dataService.numOfPages();
             var numOfPages = Math.Ceiling((double)totalItems / attr.PageSize);
 
-            var prev = attr.Page > 0 ? CreatePagingLink(attr.Page - 1, attr.PageSize) : null;
+            var prev = attr.Page > 0 
+                ? CreatePagingLink(attr.Page - 1, attr.PageSize) : null;
 
-            var next = attr.Page < numOfPages - 1 ? CreatePagingLink(attr.Page + 1, attr.PageSize) : null;
+            var next = attr.Page < numOfPages - 1 
+                ? CreatePagingLink(attr.Page + 1, attr.PageSize) : null;
 
             return new
             {
