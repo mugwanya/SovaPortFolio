@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SovaDataAccessLayer;
 using SovaDataAccessLayer.QATables;
+using SovaWebAppicaltion.Model;
 
 namespace Sova.Controller
 {
@@ -16,6 +17,7 @@ namespace Sova.Controller
     {
         IQADatabaseService _dataService;
         IMapper _mapper;
+
         public UserController(IQADatabaseService dataService, IMapper mapper)
         {
             _dataService = dataService;
@@ -32,18 +34,20 @@ namespace Sova.Controller
 
         }
 
-        [HttpGet("{userId}")]
-        public ActionResult GetUser (int userId)
+
+ 
+        [HttpGet("{userId}", Name = nameof(GetUser))]
+        public ActionResult GetUser(int userId)
         {
-            var user = _dataService.GetUser(userId);
-            if (user == null) return NotFound();
-            return Ok(user);
+            var users = _dataService.GetUser(userId);
+            if (users == null) return NotFound();
+            return Ok(users);
         }
 
         // HELPER FUNCTIONS
-        private CommentDto CreateCommentDto(User user)
+        private UserDto CreateUserDto(User user)
         {
-            var dto = _mapper.Map<CommentDto>(user);
+            var dto = _mapper.Map<UserDto>(user);
             dto.Link = Url.Link(
                     nameof(GetUser),
                     new { userId = user.Id });
@@ -51,9 +55,10 @@ namespace Sova.Controller
         }
 
 
+
         private object CreateResult(IEnumerable<User> users, PagingAttributes attr)
         {
-            var totalItems = _dataService.NumberOfComments();
+            var totalItems = _dataService.NumberOfUsers();
             var numberOfPages = Math.Ceiling((double)totalItems / attr.PageSize);
 
             var prev = attr.Page > 0 ? CreatePagingLink(attr.Page - 1, attr.PageSize) : null;
@@ -66,7 +71,7 @@ namespace Sova.Controller
                 numberOfPages,
                 prev,
                 next,
-                items = users.Select(CreateCommentDto)
+                items = users.Select(CreateUserDto)
             };
         }
 

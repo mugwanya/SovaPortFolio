@@ -146,6 +146,7 @@ namespace SovaDataAccessLayer
             return db.Users.Find(userId);
         }
 
+
         ///////////////////////
         // 
         // Linkpost 
