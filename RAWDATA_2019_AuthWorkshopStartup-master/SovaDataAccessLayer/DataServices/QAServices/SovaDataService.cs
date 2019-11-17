@@ -130,7 +130,7 @@ namespace SovaDataAccessLayer
         /////////////////////// 
 
         // Gets All GetUsers  
-        public IList<User> GetUsers(PagingAttributes pagingAttributes)
+        public IList<User> QAGetUsers(PagingAttributes pagingAttributes)
         {
             SovaContext db = new SovaContext();
             return db.Users.Skip(pagingAttributes.Page * pagingAttributes.PageSize)
@@ -140,7 +140,7 @@ namespace SovaDataAccessLayer
         }
 
         //Get a post by Id
-        public User GetUser(int userId)
+        public User QAGetUser(int userId)
         {
             SovaContext db = new SovaContext();
             return db.Users.Find(userId);

@@ -25,11 +25,11 @@ namespace Sova.Controller
         }
        
 
-        [HttpGet(Name = nameof(GetUsers))]
-        public ActionResult GetUsers([FromQuery]PagingAttributes pagingAttributes)
+        [HttpGet(Name = nameof(QAGetUsers))]
+        public ActionResult QAGetUsers([FromQuery]PagingAttributes pagingAttributes)
         {
 
-            var users = _dataService.GetUsers(pagingAttributes);
+            var users = _dataService.QAGetUsers(pagingAttributes);
             var result = CreateResult(users, pagingAttributes);
             return Ok(result);
 
@@ -37,10 +37,10 @@ namespace Sova.Controller
 
 
  
-        [HttpGet("{userId}", Name = nameof(GetUser))]
-        public ActionResult GetUser(int userId)
+        [HttpGet("{userId}", Name = nameof(QAGetUser))]
+        public ActionResult QAGetUser(int userId)
         {
-            var users = _dataService.GetUser(userId);
+            var users = _dataService.QAGetUser(userId);
             if (users == null) return NotFound();
             return Ok(users);
         }
@@ -50,7 +50,7 @@ namespace Sova.Controller
         {
             var dto = _mapper.Map<UserDto>(user);
             dto.Link = Url.Link(
-                    nameof(GetUser),
+                    nameof(QAGetUser),
                     new { userId = user.Id });
             return dto;
         }
@@ -78,7 +78,7 @@ namespace Sova.Controller
 
         private string CreatePagingLink(int page, int pageSize)
         {
-            return Url.Link(nameof(GetUsers), new { page, pageSize });
+            return Url.Link(nameof(QAGetUsers), new { page, pageSize });
         }
 
     }

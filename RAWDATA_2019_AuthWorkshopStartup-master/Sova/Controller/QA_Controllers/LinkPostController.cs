@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SovaDataAccessLayer;
 using SovaDataAccessLayer.QATables;
+using SovaWebAppicaltion.Model;
 
 namespace Sova.Controller
 {
@@ -22,28 +23,37 @@ namespace Sova.Controller
             _mapper = mapper;
         }
 
+        [HttpGet("{linkPostId}", Name = nameof(GetLinkPostId))]
+        public ActionResult GetLinkPostId(int linkPostId)
+        {
+            var getLinkPost = _dataService.GetLinkPostId(linkPostId);
+            if (getLinkPost == null) return NotFound();
+            return Ok(getLinkPost);
+        }
 
-        [HttpGet(Name = nameof(GetLinkPostIds))]
+
+      
+        [HttpGet("{linkPostId}", Name = nameof(GetLinkPostIds))]
         public ActionResult GetLinkPostIds([FromQuery]PagingAttributes pagingAttributes)
         {
-            var linkpost = _dataService.GetPosts(pagingAttributes);
+            var linkpost = _dataService.GetLinkPostIds(pagingAttributes);
             var result = CreateResult(linkpost, pagingAttributes);
             return Ok(result);
 
         }
         // HELPER FUNCTIONS
-        private LinkPostDto CreateUserDto(LinkPost user)
+        private LinkPostDto CreateLinkDto(LinkPost linkpost)
         {
-            var dto = _mapper.Map<LinkPost>(user);
+            var dto = _mapper.Map<LinkPostDto>(linkpost);
             dto.Link = Url.Link(
-                    nameof(GetUser),
-                    new { userId = user.Id });
+                    nameof(GetLinkPostId),
+                    new { linkPostId = linkpost.PostId });
             return dto;
         }
 
 
         // Helper Method
-        private object CreateResult(IEnumerable<User> users, PagingAttributes attr)
+        private object CreateResult(IEnumerable<LinkPost> linkpost, PagingAttributes attr)
         {
             var totalItems = _dataService.NumberGetLinkPost();
             var numberOfPages = Math.Ceiling((double)totalItems / attr.PageSize);
@@ -58,13 +68,13 @@ namespace Sova.Controller
                 numberOfPages,
                 prev,
                 next,
-                items = users.Select(CreateUserDto)
+                items = linkpost.Select(CreateLinkDto)
             };
         }
 
         private string CreatePagingLink(int page, int pageSize)
         {
-            return Url.Link(nameof(GetUsers), new { page, pageSize });
+            return Url.Link(nameof(GetLinkPostIds), new { page, pageSize });
         }
 
     }
