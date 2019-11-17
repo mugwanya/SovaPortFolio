@@ -33,20 +33,21 @@ namespace SovaWebAppicaltion.Controller.Framework_Controllers
             return Ok(result);
         }
 
+        [HttpGet("usernotes/{userId}", Name = nameof(GetNotesByUserId))]
+        public ActionResult GetNotesByUserId(int userId, [FromQuery]PagingAttributes pagingAttributes)
+        {
+            var notes = _dataService.ReadAll(userId, pagingAttributes);
+            if (notes == null) return NotFound();
+            var result = CreatedResult(notes, pagingAttributes);
+            return Ok(result);
+        }
+
         [HttpGet("{noteId}", Name = nameof(GetNote))]
         public ActionResult GetNote(int noteId)
         {
             var note = _dataService.Read(noteId);
             if (note == null) return NotFound();
             return Ok(note);
-        }
-
-        [HttpGet("usernotes/{userId}")]
-        public ActionResult GetNotesByUserId (int userId)
-        {
-            var notes = _dataService.ReadAll(userId);
-            if (notes == null) return NotFound();
-            return Ok(notes);
         }
 
         [HttpPost]

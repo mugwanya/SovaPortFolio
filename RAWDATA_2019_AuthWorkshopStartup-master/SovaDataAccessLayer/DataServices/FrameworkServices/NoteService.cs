@@ -59,11 +59,13 @@ namespace SovaDataAccessLayer.DataServices
             return db.Notes.Find(noteId);
         }
 
-        public List<Notes> ReadAll(int userid)
+        public List<Notes> ReadAll(int userid, PagingAttributes pagingAttributes)
         {
             SovaContext db = new SovaContext();
             return db.Notes
-                .Where(x => x.Userid == userid).ToList();
+                .Where(x => x.Userid == userid)
+                .Skip(pagingAttributes.Page * pagingAttributes.PageSize)
+                .Take(pagingAttributes.PageSize).ToList();
         }
 
         public void Update(Notes updateNote)
