@@ -31,7 +31,8 @@ namespace Sova.Controller
             return Ok(getLinkPost);
         }
 
-        [HttpGet("{linkPostId}", Name = nameof(GetLinkPostIds))]
+
+        [HttpGet( Name = nameof(GetLinkPostIds))]
         public ActionResult GetLinkPostIds([FromQuery]PagingAttributes pagingAttributes)
         {
             var linkpost = _dataService.GetLinkPostIds(pagingAttributes);
@@ -39,15 +40,18 @@ namespace Sova.Controller
             return Ok(result);
 
         }
+
         // HELPER FUNCTIONS
         private LinkPostDto CreateLinkDto(LinkPost linkpost)
         {
             var dto = _mapper.Map<LinkPostDto>(linkpost);
             dto.Link = Url.Link(
                     nameof(GetLinkPostId),
-                    new { linkPostId = linkpost.PostId });
+                    new { linkPostId = linkpost.PostId});
             return dto;
         }
+
+   
 
 
         // Helper Method
