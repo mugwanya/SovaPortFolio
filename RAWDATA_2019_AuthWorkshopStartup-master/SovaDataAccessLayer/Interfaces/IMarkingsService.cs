@@ -7,11 +7,12 @@ namespace SovaDataAccessLayer.Interfaces
 {
     public interface IMarkingsService
     {
+        List<Marking> GetAllMarkings();
         void CreateMarking(Marking marking);
-        List<Marking> GetMarkins(int userid);
+        List<Marking> GetMarkings(int userid);
         List<Marking> Read(int userid, int postcommentsid);
         Marking GetMarking(int markingId);
-        void UpdateMarking(int markingId);
+        void UpdateMarking(Marking marking);
         bool DeleteMarking(int markingId);
         bool MarkingsExcist(int markingId);
     }

@@ -33,10 +33,10 @@ namespace SovaDataAccessLayer.DataServices
             return db.Markings.Find(markingId);
         }
 
-        public List<Marking> GetMarkins(int userid)
+        public List<Marking> GetMarkings(int userid)
         {
             SovaContext db = new SovaContext();
-            return db.Markings.ToList();
+            return db.Markings.Where(x => x.Id == userid).ToList();
         }
 
         public bool MarkingsExcist(int markingId)
@@ -49,11 +49,17 @@ namespace SovaDataAccessLayer.DataServices
             throw new NotImplementedException();
         }
 
-        public void UpdateMarking(int markingId)
+        public void UpdateMarking(Marking marking)
         {
             SovaContext db = new SovaContext();
-            db.Update(markingId);
+            db.Update(marking);
             db.SaveChanges();
+        }
+
+        public List<Marking> GetAllMarkings()
+        {
+            SovaContext db = new SovaContext();
+            return db.Markings.ToList();
         }
     }
 }
