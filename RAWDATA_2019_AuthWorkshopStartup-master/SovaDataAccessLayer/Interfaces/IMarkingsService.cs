@@ -1,4 +1,5 @@
 ﻿using SovaDataAccessLayer.FrameworkTables;
+using SovaDataAccessLayer.QATables;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,7 +8,8 @@ namespace SovaDataAccessLayer.Interfaces
 {
     public interface IMarkingsService
     {
-        List<Marking> GetAllMarkings();
+        int numOfPages();
+        List<Marking> GetAllMarkings(PagingAttributes pagingAttributes);
         void CreateMarking(Marking marking);
         List<Marking> GetMarkings(int userid);
         List<Marking> Read(int userid, int postcommentsid);

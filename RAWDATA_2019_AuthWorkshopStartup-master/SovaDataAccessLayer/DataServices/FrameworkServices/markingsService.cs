@@ -1,5 +1,6 @@
 ﻿using SovaDataAccessLayer.FrameworkTables;
 using SovaDataAccessLayer.Interfaces;
+using SovaDataAccessLayer.QATables;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,22 @@ namespace SovaDataAccessLayer.DataServices
 {
     public class markingsService : IMarkingsService
     {
+        public int numOfPages()
+        {
+            SovaContext db = new SovaContext();
+            return db.Markings.Count();
+        }
         public void CreateMarking(Marking marking)
         {
             SovaContext db = new SovaContext();
-            marking.Id = db.Markings.Max(x => x.Id) + 1;
+            var markingsSize = db.Markings.ToList().Count();
+            if (markingsSize < 1)
+            {
+                marking.Id = 1;
+            } else
+            {
+                marking.Id = db.Markings.Max(x => x.Id) + 1;
+            }
             db.Add(marking);
             db.SaveChanges();
         }
@@ -56,10 +69,12 @@ namespace SovaDataAccessLayer.DataServices
             db.SaveChanges();
         }
 
-        public List<Marking> GetAllMarkings()
+        public List<Marking> GetAllMarkings(PagingAttributes pagingAttributes)
         {
             SovaContext db = new SovaContext();
-            return db.Markings.ToList();
+            return db.Markings
+                .Skip(pagingAttributes.Page * pagingAttributes.PageSize)
+                .Take(pagingAttributes.PageSize).ToList();
         }
     }
 }
