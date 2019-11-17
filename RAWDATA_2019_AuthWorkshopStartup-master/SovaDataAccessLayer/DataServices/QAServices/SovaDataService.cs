@@ -154,11 +154,6 @@ namespace SovaDataAccessLayer
         /////////////////////// 
 
         // Gets All LinkPosts
-        public List<LinkPost> GetLinkPostId()
-        {
-            SovaContext db = new SovaContext();
-            return db.LinkPosts.ToList();
-        }
 
         // Gets Number Of Comments
         public int NumberOfComments()
@@ -178,6 +173,21 @@ namespace SovaDataAccessLayer
         {
             var db = new SovaContext();
             return db.Users.Count();
+        }
+
+        public int NumberGetLinkPost()
+        {
+            var db = new SovaContext();
+            return db.LinkPosts.Count();
+        }
+
+        public IList<LinkPost> GetLinkPostId(PagingAttributes pagingAttributes)
+        {
+            SovaContext db = new SovaContext();
+            return db.LinkPosts.Skip(pagingAttributes.Page * pagingAttributes.PageSize)
+                .Take(pagingAttributes.PageSize)
+                .ToList();
+
         }
 
 
