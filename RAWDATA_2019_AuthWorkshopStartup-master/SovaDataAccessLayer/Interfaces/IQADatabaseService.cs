@@ -30,7 +30,7 @@ namespace SovaDataAccessLayer
 
         // Users 
         //       
-        List<User> GetUsers();
+        IList<User> GetUsers(PagingAttributes pagingAttributes);
 
         User GetUser(int userId);
 
