@@ -136,7 +136,6 @@ namespace SovaDataAccessLayer
             return db.Users.Skip(pagingAttributes.Page * pagingAttributes.PageSize)
               .Take(pagingAttributes.PageSize)
               .ToList();
-
         }
 
         //Get a post by Id
