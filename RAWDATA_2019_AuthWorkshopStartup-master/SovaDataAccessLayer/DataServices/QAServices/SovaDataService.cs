@@ -129,19 +129,23 @@ namespace SovaDataAccessLayer
         // 
         /////////////////////// 
 
-        // Gets All GetUsers
-        public List<User> GetUsers()
+        // Gets All GetUsers  
+        public IList<User> QAGetUsers(PagingAttributes pagingAttributes)
         {
             SovaContext db = new SovaContext();
-            return db.Users.ToList();
+            return db.Users.Skip(pagingAttributes.Page * pagingAttributes.PageSize)
+              .Take(pagingAttributes.PageSize)
+              .ToList();
+
         }
 
         //Get a post by Id
-        public User GetUser(int userId)
+        public User QAGetUser(int userId)
         {
             SovaContext db = new SovaContext();
             return db.Users.Find(userId);
         }
+
 
         ///////////////////////
         // 
@@ -150,11 +154,6 @@ namespace SovaDataAccessLayer
         /////////////////////// 
 
         // Gets All LinkPosts
-        public List<LinkPost> GetLinkPostId()
-        {
-            SovaContext db = new SovaContext();
-            return db.LinkPosts.ToList();
-        }
 
         // Gets Number Of Comments
         public int NumberOfComments()
@@ -170,14 +169,32 @@ namespace SovaDataAccessLayer
             return db.Posts.Count();
         }
 
+        public int NumberOfUsers()
+        {
+            var db = new SovaContext();
+            return db.Users.Count();
+        }
 
+        public int NumberGetLinkPost()
+        {
+            var db = new SovaContext();
+            return db.LinkPosts.Count();
+        }
 
+        public IList<LinkPost> GetLinkPostIds(PagingAttributes pagingAttributes)
+        {
+            SovaContext db = new SovaContext();
+            return db.LinkPosts.Skip(pagingAttributes.Page * pagingAttributes.PageSize)
+                .Take(pagingAttributes.PageSize)
+                .ToList();
 
+        }
 
-
-
-
-
+        public LinkPost GetLinkPostId(int linkId)
+        {
+            SovaContext db = new SovaContext();
+            return db.LinkPosts.Find(linkId);
+        }
 
         /*// Gets All Words (TEST)
         public List<Wi> GetWords()

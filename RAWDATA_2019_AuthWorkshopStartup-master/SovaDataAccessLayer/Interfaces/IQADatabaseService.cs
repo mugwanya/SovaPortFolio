@@ -30,9 +30,9 @@ namespace SovaDataAccessLayer
 
         // Users 
         //       
-        List<User> GetUsers();
+        IList<User> QAGetUsers(PagingAttributes pagingAttributes);
 
-        User GetUser(int userId);
+        User QAGetUser(int userId);
 
         ///////////////////////
 
@@ -40,14 +40,20 @@ namespace SovaDataAccessLayer
 
         /////////////////////// 
 
-        List<LinkPost> GetLinkPostId();
+        IList<LinkPost> GetLinkPostIds(PagingAttributes pagingAttributes);
 
-        // Gets Number Of Comments 
+        LinkPost GetLinkPostId(int linkId);
+
+        // Gets Number Of Comments , Posts, Users
 
         /////////////////////// 
 
         int NumberOfComments();
 
         int NumberOfPosts();
+
+        int NumberOfUsers();
+
+        int NumberGetLinkPost();
     }
 }

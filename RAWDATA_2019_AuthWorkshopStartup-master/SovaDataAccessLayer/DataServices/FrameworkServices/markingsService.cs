@@ -1,5 +1,6 @@
 ﻿using SovaDataAccessLayer.FrameworkTables;
 using SovaDataAccessLayer.Interfaces;
+using SovaDataAccessLayer.QATables;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,22 @@ namespace SovaDataAccessLayer.DataServices
 {
     public class markingsService : IMarkingsService
     {
+        public int numOfPages()
+        {
+            SovaContext db = new SovaContext();
+            return db.Markings.Count();
+        }
         public void CreateMarking(Marking marking)
         {
             SovaContext db = new SovaContext();
-            marking.Id = db.Markings.Max(x => x.Id) + 1;
+            var tmpList = db.Markings.ToList();
+            if (tmpList.Count == 0)
+            {
+                marking.Id = 1;
+            } else
+            {
+                marking.Id = db.Markings.Max(x => x.Id) + 1;
+            }
             db.Add(marking);
             db.SaveChanges();
         }
@@ -33,10 +46,13 @@ namespace SovaDataAccessLayer.DataServices
             return db.Markings.Find(markingId);
         }
 
-        public List<Marking> GetMarkings(int userid)
+        public List<Marking> GetMarkings(int userid, PagingAttributes pagingAttributes)
         {
             SovaContext db = new SovaContext();
-            return db.Markings.Where(x => x.Id == userid).ToList();
+            return db.Markings
+                .Where(x => x.UserId == userid)
+                .Skip(pagingAttributes.Page * pagingAttributes.PageSize)
+                .Take(pagingAttributes.PageSize).ToList();
         }
 
         public bool MarkingsExcist(int markingId)
@@ -56,10 +72,12 @@ namespace SovaDataAccessLayer.DataServices
             db.SaveChanges();
         }
 
-        public List<Marking> GetAllMarkings()
+        public List<Marking> GetAllMarkings(PagingAttributes pagingAttributes)
         {
             SovaContext db = new SovaContext();
-            return db.Markings.ToList();
+            return db.Markings
+                .Skip(pagingAttributes.Page * pagingAttributes.PageSize)
+                .Take(pagingAttributes.PageSize).ToList();
         }
     }
 }

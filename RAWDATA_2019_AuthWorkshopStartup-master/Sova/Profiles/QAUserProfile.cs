@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using SovaDataAccessLayer.FrameworkTables;
+using SovaDataAccessLayer;
 using SovaWebAppicaltion.Model;
 using System;
 using System.Collections.Generic;
@@ -8,12 +8,11 @@ using System.Threading.Tasks;
 
 namespace SovaWebAppicaltion.Profiles
 {
-    public class NoteProfile : Profile
+    public class QAUserProfile : Profile
     {
-        public NoteProfile()
+        public QAUserProfile()
         {
-            CreateMap<Notes, NoteDto>();
-            CreateMap<NoteForCreation, Notes>();
+            CreateMap<User, UserDto>();
         }
     }
 }
