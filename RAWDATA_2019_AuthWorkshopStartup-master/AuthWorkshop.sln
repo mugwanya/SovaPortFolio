@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SovaWebAppicaltion", "Sova\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SovaDataAccessLayer", "SovaDataAccessLayer\SovaDataAccessLayer.csproj", "{9F886C7E-48BA-47E7-82FD-0D081ABDC957}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SovaDataAccessLayerTests1", "SovaDataAccessLayerTests1\SovaDataAccessLayerTests1.csproj", "{B57FDC1F-2DA7-4EE3-99CA-79F1121FA16D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{9F886C7E-48BA-47E7-82FD-0D081ABDC957}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F886C7E-48BA-47E7-82FD-0D081ABDC957}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F886C7E-48BA-47E7-82FD-0D081ABDC957}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B57FDC1F-2DA7-4EE3-99CA-79F1121FA16D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B57FDC1F-2DA7-4EE3-99CA-79F1121FA16D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B57FDC1F-2DA7-4EE3-99CA-79F1121FA16D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B57FDC1F-2DA7-4EE3-99CA-79F1121FA16D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
