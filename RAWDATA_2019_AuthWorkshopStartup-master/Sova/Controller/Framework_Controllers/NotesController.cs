@@ -10,6 +10,7 @@ using SovaDataAccessLayer.QATables;
 using SovaWebAppicaltion.Profiles;
 using AutoMapper;
 using SovaWebAppicaltion.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace SovaWebAppicaltion.Controller.Framework_Controllers
 {

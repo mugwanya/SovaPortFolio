@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SovaDataAccessLayer.FrameworkTables;
+using System.Collections.Generic;
 
 namespace SovaDataAccessLayer
 {
@@ -31,8 +32,8 @@ namespace SovaDataAccessLayer
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-        // Test To Check Connection Url Gets All Words From SovaDatabase
-         // http://localhost:5001/api/wis //
+            // Test To Check Connection Url Gets All Words From SovaDatabase
+            // http://localhost:5001/api/wis //
 
             modelBuilder.Entity<Wi>().ToTable("wi", "QA");
             modelBuilder.Entity<Wi>().Property(m => m.Id).HasColumnName("id");
@@ -56,15 +57,15 @@ namespace SovaDataAccessLayer
             modelBuilder.Entity<Post>().Property(m => m.Body).HasColumnName("body");
             modelBuilder.Entity<Post>().Property(m => m.CloseDate).HasColumnName("closedate");
             modelBuilder.Entity<Post>().Property(m => m.Title).HasColumnName("title");
-            modelBuilder.Entity<Post>().Property(m => m.Tags).HasColumnName("tags");    
+            modelBuilder.Entity<Post>().Property(m => m.Tags).HasColumnName("tags");
             modelBuilder.Entity<Post>().Property(m => m.UserId).HasColumnName("userid");
 
             modelBuilder.Entity<User>().ToTable("users", "QA");
-             modelBuilder.Entity<User>().Property(m => m.Id).HasColumnName("id");
-             modelBuilder.Entity<User>().Property(m => m.DisplayName).HasColumnName("displayname");
-             modelBuilder.Entity<User>().Property(m => m.CreationDate).HasColumnName("creationdate");
-             modelBuilder.Entity<User>().Property(m => m.Location).HasColumnName("location");
-             modelBuilder.Entity<User>().Property(m => m.Age).HasColumnName("age");
+            modelBuilder.Entity<User>().Property(m => m.Id).HasColumnName("id");
+            modelBuilder.Entity<User>().Property(m => m.DisplayName).HasColumnName("displayname");
+            modelBuilder.Entity<User>().Property(m => m.CreationDate).HasColumnName("creationdate");
+            modelBuilder.Entity<User>().Property(m => m.Location).HasColumnName("location");
+            modelBuilder.Entity<User>().Property(m => m.Age).HasColumnName("age");
 
             modelBuilder.Entity<LinkPost>().ToTable("linkpost", "QA");
             modelBuilder.Entity<LinkPost>().Property(m => m.LinkPostId).HasColumnName("postid");
@@ -74,12 +75,12 @@ namespace SovaDataAccessLayer
             modelBuilder.Entity<History>().Property(m => m.userid).HasColumnName("userid");
             modelBuilder.Entity<History>().Property(m => m.timestamped).HasColumnName("timestamped");
             modelBuilder.Entity<History>().Property(m => m.searchquery).HasColumnName("searchquery");
-            modelBuilder.Entity<History>().HasKey(m => new { m.userid, m.timestamped});
+            modelBuilder.Entity<History>().HasKey(m => new { m.userid, m.timestamped });
 
             modelBuilder.Entity<FrameworkTables.User>().ToTable("users", "Framework");
             modelBuilder.Entity<FrameworkTables.User>().Property(m => m.Id).HasColumnName("id");
             modelBuilder.Entity<FrameworkTables.User>().Property(m => m.Username).HasColumnName("username");
-            
+
             modelBuilder.Entity<Notes>().ToTable("notes", "Framework");
             modelBuilder.Entity<Notes>().Property(m => m.Id).HasColumnName("id");
             modelBuilder.Entity<Notes>().Property(m => m.Markingid).HasColumnName("markingid");
