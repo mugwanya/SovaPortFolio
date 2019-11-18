@@ -9,6 +9,7 @@ using SovaDataAccessLayer.FrameworkTables;
 using SovaDataAccessLayer.QATables;
 using SovaWebAppicaltion.Model;
 using AutoMapper;
+using SovaWebAppicaltion.Model.FrameworkModels;
 
 namespace SovaWebAppicaltion.Controller.Framework_Controllers
 {
@@ -42,10 +43,14 @@ namespace SovaWebAppicaltion.Controller.Framework_Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateUser([FromBody] SovaDataAccessLayer.FrameworkTables.User user)
+        public ActionResult CreateUser(UsersForCreation userDto)
         {
+            var user = _mapper.Map<SovaDataAccessLayer.FrameworkTables.User>(userDto);
             _dataService.CreateUser(user);
-            return Created("", user);
+            return CreatedAtRoute(
+                nameof(GetUser),
+                new { userId = user.Id },
+                CreateuserDto(user));
         }
 
         [HttpPut("{userId}")]
@@ -80,11 +85,11 @@ namespace SovaWebAppicaltion.Controller.Framework_Controllers
                 numOfPages,
                 prev,
                 next,
-                items = users.Select(CreateNoteDto)
+                items = users.Select(CreateuserDto)
             };
         }
 
-        private UsersDto CreateNoteDto(SovaDataAccessLayer.FrameworkTables.User user)
+        private UsersDto CreateuserDto(SovaDataAccessLayer.FrameworkTables.User user)
         {
             var dto = _mapper.Map<UsersDto>(user);
             dto.Link = Url.Link(

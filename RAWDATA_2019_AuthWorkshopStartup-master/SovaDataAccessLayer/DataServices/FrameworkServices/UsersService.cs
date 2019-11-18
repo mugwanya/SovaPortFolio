@@ -18,7 +18,14 @@ namespace SovaDataAccessLayer
         public void CreateUser(FrameworkTables.User user)
         {
             SovaContext db = new SovaContext();
-            user.Id = db.FrameworkUsers.Max(x => x.Id) + 1;
+            var tmpList = db.Users.ToList();
+            if (tmpList.Count() == 0)
+            {
+                user.Id = 1;
+            } else
+            {
+                user.Id = db.FrameworkUsers.Max(x => x.Id) + 1;
+            }
             db.Add(user);
             db.SaveChanges();
         }
