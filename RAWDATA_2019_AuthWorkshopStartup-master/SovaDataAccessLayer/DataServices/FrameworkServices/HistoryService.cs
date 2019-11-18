@@ -10,12 +10,12 @@ namespace SovaDataAccessLayer.DataServices
 {
     public class HistoryService : IHistoryService
     {
-        public bool Delete(History entry)
+        public bool Delete(int userId, DateTime timestamp)
         {
             SovaContext db = new SovaContext();
             try
             {
-                db.Histories.Remove(entry);
+                db.Histories.Remove(Read(userId,timestamp)[0]);
                 db.SaveChanges();
                 return true;
             }
@@ -47,6 +47,13 @@ namespace SovaDataAccessLayer.DataServices
             SovaContext db = new SovaContext();
 
             return db.Histories.Count();
+        }
+
+        public List<History> Read(int userId, DateTime timestamp)
+        {
+            SovaContext db = new SovaContext();
+
+            return db.Histories.Where(x => x.userid == userId && x.timestamped == timestamp).Select(x => x).ToList();
         }
     }
 }

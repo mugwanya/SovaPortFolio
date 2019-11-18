@@ -10,7 +10,8 @@ namespace SovaDataAccessLayer.Interfaces
     {
         List<History> ReadAll(int userId, PagingAttributes pagingAttributes);
         List<History> Read(int userId, DateTime from, DateTime to);
-        bool Delete(History entry);
+        List<History> Read(int userId, DateTime timestamp);
+        bool Delete(int userId, DateTime timestamp);
         int NumberofHistory(int userId);
     }
 }

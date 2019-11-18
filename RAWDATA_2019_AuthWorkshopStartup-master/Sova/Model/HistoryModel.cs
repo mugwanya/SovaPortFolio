@@ -8,6 +8,6 @@ namespace SovaWebAppicaltion.Model
 {
     public class HistoryModel : History
     {
-        public string link { get; set; }
+        public string Link { get; set; }
     }
 }

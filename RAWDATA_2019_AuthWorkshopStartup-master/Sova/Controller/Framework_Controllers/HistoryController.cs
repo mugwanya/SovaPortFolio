@@ -4,8 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using SovaDataAccessLayer.FrameworkTables;
 using SovaDataAccessLayer.Interfaces;
 using SovaDataAccessLayer.QATables;
+using SovaWebAppicaltion.Model;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -24,36 +26,32 @@ namespace SovaWebAppicaltion.Controller
             _mapper = mapper;
         }
 
-        // GET: api/Framework/history
-        [HttpGet(Name = nameof(GetHistory))]
+        // GET: api/Framework/history/1
+        [HttpGet("{userid}", Name = nameof(GetHistory))]
         public ActionResult GetHistory(int userId, [FromQuery] PagingAttributes pagingAttributes)
         {
             return Ok(CreateResult(userId, pagingAttributes));
-        }        
-
-        // GET api/<controller>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
         }
 
-        // POST api/<controller>
-        [HttpPost]
-        public void Post([FromBody]string value)
+        // GET api/Framework/history
+        [HttpGet(Name = nameof(GetSingleHistory))]
+        public ActionResult GetSingleHistory(int userId, DateTime timestamp)
         {
+            return Ok(_historyService.Read(userId, timestamp));
         }
 
-        // PUT api/<controller>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        // DELETE api/Framework/history/1
+        [HttpDelete("{userid}")]
+        public ActionResult Delete(int userid, DateTime timestamp)
         {
-        }
-
-        // DELETE api/<controller>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            if(_historyService.Delete(userid, timestamp))
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
         private object CreateResult(int userId, PagingAttributes pagingAttributes)
@@ -68,19 +66,29 @@ namespace SovaWebAppicaltion.Controller
                 ? CreatePagingLink(pagingAttributes.Page + 1, pagingAttributes.PageSize, userId)
                 : null;
 
+            var histories = _historyService.ReadAll(userId, pagingAttributes);
+
             return new
             {
                 totalItems,
                 numberOfPages,
                 previous,
                 next,
-                items = _historyService.ReadAll(userId, pagingAttributes)
+                items = histories.Select(ConverttoHistoryModel)
             };
+
         }
 
         private string CreatePagingLink(int page, int pageSize, int userId)
         {
             return Url.Link(nameof(GetHistory), new { page, pageSize, userId });
+        }
+
+        private object ConverttoHistoryModel(History history)
+        {
+            var dto = _mapper.Map<HistoryModel>(history);
+            dto.Link = Url.Link(nameof(GetSingleHistory), new { userId = history.userid, timestamp = history.timestamped });
+            return dto;
         }
     }
 }
