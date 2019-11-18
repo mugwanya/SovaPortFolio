@@ -63,16 +63,6 @@ namespace SovaWebAppicaltion.Controller.Framework_Controllers
                 CreateNoteDto(note));
         }
 
-        [HttpDelete("{noteId}")]
-        public ActionResult DeleteNote (int noteId)
-        {
-            if (_dataService.Delete(noteId))
-            {
-                return NoContent();
-            }
-            return NotFound();
-        }
-
         [HttpPut("{noteId}")]
         public ActionResult UpdateNote (int noteId, Notes note)
         {
@@ -80,6 +70,16 @@ namespace SovaWebAppicaltion.Controller.Framework_Controllers
             note.Id = noteId;
             _dataService.Update(note);
             return NoContent();
+        }
+
+        [HttpDelete("{noteId}")]
+        public ActionResult DeleteNote(int noteId)
+        {
+            if (_dataService.Delete(noteId))
+            {
+                return NoContent();
+            }
+            return NotFound();
         }
 
         //HELPER FUNCTIONS
