@@ -1,40 +1,24 @@
 ﻿define(["knockout", "dataService"], function (ko, ds) {
-    var firstName = ko.observable("Peter");
-    var lastName = ko.observable("Smith");
+    
 
-    var fullName = ko.computed(function () {
-        return firstName() + " " + lastName();
-    });
-
-    var names = ko.observableArray([]);
-
-    var addName = function (data) {
-        names.push(fullName());
+    var currentComponent = ko.observable("page2");
+    var currentParams = ko.observable({});
+    var changeContent = () => {
+        if (currentComponent() === "page1") {
+            currentParams({ name: 'Ellen' });
+            currentComponent("page2");
+        } else {
+            currentParams({});
+            currentComponent("page1");
+        }
     };
 
-    var delName = function (name) {
-        names.remove(name);
-    };
-
-    //ds.getNamesWithJQyery(function(data) {
-    //    names(data);
-    //});
-
-    //ds.getNamesWithFetch(function(data) {
-    //    names(data);
-    //});
-
-    ds.getNamesWithFetchAsync(function (data) {
-        console.log(names);
-        names(data);
-    });
+    
 
     return {
-        firstName,
-        lastName,
-        fullName,
-        names,
-        addName,
-        delName
+        currentComponent,
+        currentParams,
+        changeContent
+
     };
 });

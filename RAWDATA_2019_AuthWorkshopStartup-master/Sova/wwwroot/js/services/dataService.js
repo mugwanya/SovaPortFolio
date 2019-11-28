@@ -14,15 +14,15 @@
     };
 
     var getNamesWithFetchAsync = async function(callback) {
-        var response = await fetch("api/QA/comments");
+        var response = await fetch("api/names");
         var data = await response.json();
         callback(data);
     };
 
 
     return {
-        
-        
+        getNamesWithJQyery,
+        getNamesWithFetch,
         getNamesWithFetchAsync
     }
 });
