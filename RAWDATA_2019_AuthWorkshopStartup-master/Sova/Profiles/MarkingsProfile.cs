@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using SovaDataAccessLayer.FrameworkTables;
 using SovaWebAppicaltion.Model;
+using SovaWebAppicaltion.Model.FrameworkModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace SovaWebAppicaltion.Profiles
         public MarkingsProfile()
         {
             CreateMap<Marking, MarkingsDto>();
+            CreateMap<MarkingForCreation, Marking>();
         }
     }
 }

@@ -9,6 +9,8 @@ using SovaDataAccessLayer.FrameworkTables;
 using SovaDataAccessLayer.QATables;
 using SovaWebAppicaltion.Profiles;
 using AutoMapper;
+using SovaWebAppicaltion.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace SovaWebAppicaltion.Controller.Framework_Controllers
 {
@@ -34,7 +36,8 @@ namespace SovaWebAppicaltion.Controller.Framework_Controllers
         }
 
         [HttpGet("usernotes/{userId}", Name = nameof(GetNotesByUserId))]
-        public ActionResult GetNotesByUserId(int userId, [FromQuery]PagingAttributes pagingAttributes)
+        public ActionResult GetNotesByUserId(int userId,
+            [FromQuery]PagingAttributes pagingAttributes)
         {
             var notes = _dataService.ReadAll(userId, pagingAttributes);
             if (notes == null) return NotFound();
@@ -51,20 +54,14 @@ namespace SovaWebAppicaltion.Controller.Framework_Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateNotes([FromBody] Notes notes)
+        public ActionResult CreateNotes(NoteForCreation noteDto)
         {
-            _dataService.Create(notes);
-            return Created("", notes);
-        }
-
-        [HttpDelete("{noteId}")]
-        public ActionResult DeleteNote (int noteId)
-        {
-            if (_dataService.Delete(noteId))
-            {
-                return NoContent();
-            }
-            return NotFound();
+            var note = _mapper.Map<Notes>(noteDto);
+            _dataService.Create(note);
+            return CreatedAtRoute(
+                nameof(GetNote),
+                new { noteId = note.Id},
+                CreateNoteDto(note));
         }
 
         [HttpPut("{noteId}")]
@@ -76,15 +73,27 @@ namespace SovaWebAppicaltion.Controller.Framework_Controllers
             return NoContent();
         }
 
+        [HttpDelete("{noteId}")]
+        public ActionResult DeleteNote(int noteId)
+        {
+            if (_dataService.Delete(noteId))
+            {
+                return NoContent();
+            }
+            return NotFound();
+        }
+
         //HELPER FUNCTIONS
         private object CreatedResult(IEnumerable<Notes> notes, PagingAttributes attr)
         {
             var totalItems = _dataService.numOfPages();
             var numOfPages = Math.Ceiling((double)totalItems / attr.PageSize);
 
-            var prev = attr.Page > 0 ? CreatePagingLink(attr.Page - 1, attr.PageSize) : null;
+            var prev = attr.Page > 0 
+                ? CreatePagingLink(attr.Page - 1, attr.PageSize) : null;
 
-            var next = attr.Page < numOfPages - 1 ? CreatePagingLink(attr.Page + 1, attr.PageSize) : null;
+            var next = attr.Page < numOfPages - 1 
+                ? CreatePagingLink(attr.Page + 1, attr.PageSize) : null;
 
             return new
             {
@@ -95,7 +104,6 @@ namespace SovaWebAppicaltion.Controller.Framework_Controllers
                 items = notes.Select(CreateNoteDto)
             };
         }
-
         private NoteDto CreateNoteDto(Notes note)
         {
             var dto = _mapper.Map<NoteDto>(note);

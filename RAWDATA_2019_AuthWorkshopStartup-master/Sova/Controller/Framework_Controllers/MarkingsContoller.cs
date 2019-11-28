@@ -4,6 +4,7 @@ using SovaDataAccessLayer.FrameworkTables;
 using SovaDataAccessLayer.Interfaces;
 using SovaDataAccessLayer.QATables;
 using SovaWebAppicaltion.Model;
+using SovaWebAppicaltion.Model.FrameworkModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,26 +33,33 @@ namespace SovaWebAppicaltion.Controller.Framework_Controllers
             return Ok(result);
         }
 
-        [HttpGet("{markingsId}", Name = nameof(GetMarking))]
-        public ActionResult GetMarking (int markingsId)
+        [HttpGet("{markingId}", Name = nameof(GetMarking))]
+        public ActionResult GetMarking (int markingId)
         {
-            var marking = _dataService.GetMarking(markingsId);
+            var marking = _dataService.GetMarking(markingId);
+            if (marking == null) return NotFound();
             return Ok(marking);
         }
 
-        [HttpGet("usermarkings/{userId}")]
-        public ActionResult GetMakingsByUserId (int userId)
+        [HttpGet("usermarkings/{userId}", Name = nameof(GetMakingsByUserId))]
+        public ActionResult GetMakingsByUserId (int userId,
+            [FromQuery] PagingAttributes pagingAttributes)
         {
-            var markings = _dataService.GetMarkings(userId);
+            var markings = _dataService.GetMarkings(userId, pagingAttributes);
             if (markings == null) return NotFound();
-            return Ok(markings);
+            var result = CreatedResult(markings, pagingAttributes);
+            return Ok(result);
         }
 
         [HttpPost]
-        public ActionResult CreateMarking ([FromBody] Marking marking)
+        public ActionResult CreateMarking (MarkingForCreation markingDto)
         {
+            var marking = _mapper.Map<Marking>(markingDto);
             _dataService.CreateMarking(marking);
-            return NoContent();
+            return CreatedAtRoute(
+                nameof(GetMarking),
+                new { markingId = marking.Id },
+                CreateMarkingDto(marking));
         }
 
         [HttpPut("{markingId}")]
@@ -76,9 +84,11 @@ namespace SovaWebAppicaltion.Controller.Framework_Controllers
             var totalItems = _dataService.numOfPages();
             var numOfPages = Math.Ceiling((double)totalItems / attr.PageSize);
 
-            var prev = attr.Page > 0 ? CreatePagingLink(attr.Page - 1, attr.PageSize) : null;
+            var prev = attr.Page > 0 
+                ? CreatePagingLink(attr.Page - 1, attr.PageSize) : null;
 
-            var next = attr.Page < numOfPages - 1 ? CreatePagingLink(attr.Page + 1, attr.PageSize) : null;
+            var next = attr.Page < numOfPages - 1 
+                ? CreatePagingLink(attr.Page + 1, attr.PageSize) : null;
 
             return new
             {
@@ -86,16 +96,16 @@ namespace SovaWebAppicaltion.Controller.Framework_Controllers
                 numOfPages,
                 prev,
                 next,
-                items = marks.Select(CreateNoteDto)
+                items = marks.Select(CreateMarkingDto)
             };
         }
 
-        private MarkingsDto CreateNoteDto(Marking mark)
+        private MarkingsDto CreateMarkingDto(Marking mark)
         {
             var dto = _mapper.Map<MarkingsDto>(mark);
             dto.Link = Url.Link(
                 nameof(GetMarking),
-                new { markingsId = mark.Id });
+                new { markingId = mark.Id });
             return dto;
         }
 
