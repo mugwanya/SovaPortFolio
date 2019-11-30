@@ -26,6 +26,11 @@ require(['knockout'], function(ko) {
             viewModel: { require: "components/page2/page2" },
             template: { require: "text!components/page2/page2.html" }
         });
+    ko.components.register('pageTest',
+        {
+            viewModel: { require: "components/pageTest/pageTest" },
+            template: { require: "text!components/pageTest/pageTest.html" }
+        });
 });
 
 require(["knockout", "app"], function(ko, app, ds) {
