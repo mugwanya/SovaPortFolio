@@ -1,8 +1,16 @@
 ﻿<h1>TESTING PAGE - test</h1>
 
-<ul data-bind="foreach: names">
+<ul data-bind="foreach: users">
     <li>
-        <span data-bind="text: $data"></span>
-     
+        <a data-bind="attr: { href: $data.link }, text: username"></a>
     </li>
 </ul>
+
+
+<!--<ul data-bind="foreach: users">
+    <li>
+        <a data-bind="text: Username"></a>
+    </li>
+</ul>-->
+<!--<button data-bind="click: prev">Prev</button>
+<button data-bind="click: next">Next</button>-->

@@ -20,9 +20,18 @@
     };
 
 
+
+
+
+    var getUsersWithJQuery = function (url, callback) {
+        $.getJSON(url, callback);
+    };
+
+
     return {
         getNamesWithJQyery,
         getNamesWithFetch,
-        getNamesWithFetchAsync
+        getNamesWithFetchAsync,
+        getUsersWithJQuery
     }
 });
