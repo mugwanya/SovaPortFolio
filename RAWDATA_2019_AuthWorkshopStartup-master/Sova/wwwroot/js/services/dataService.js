@@ -13,8 +13,8 @@
             });
     };
 
-    var getNamesWithFetchAsync = async function(callback) {
-        var response = await fetch("api/names");
+    var getNamesWithFetchAsync = async function(url, callback) {
+        var response = await fetch(url);
         var data = await response.json();
         callback(data);
     };
