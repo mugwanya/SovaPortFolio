@@ -34,7 +34,6 @@ require(['knockout'], function(ko) {
 });
 
 require(["knockout", "app"], function(ko, app, ds) {
-    //console.log(app.name);
-
+   
     ko.applyBindings(app);
 });
