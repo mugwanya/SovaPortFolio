@@ -1,24 +1,29 @@
 ﻿define(["knockout", "dataService"], function (ko, ds) {
 
     return function (params) {
-        console.log("123");
-        var name = params ? params.name : "";
-
         var users = ko.observableArray();
+        var next = ko.observable();
+        var prev = ko.observable();
 
         var runUsers = function(url) {
-            console.log("inside");
             ds.getUsersWithJQuery(url, function (data) {
                 console.log(data);
                 users(data.items);
+                next(data.next);
+                prev(data.prev);
             });
 
         }
-        runUsers('api/Framework/users');
+
+        runUsers('api/Framework/users')
 
         return {
             name,
-            users
+            users,
+            next,
+            prev,
+            runUsers
+         
         };
     };
 });

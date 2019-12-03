@@ -17,10 +17,10 @@
     var pageOfPosts = {};
 
     ds.getUsersWithJQuery('api/Framework/users', function (data) {
-        console.log(data)
+        //console.log(data)
         users(data.items);
         pageOfPosts = data;
-        console.log(data);
+        //console.log(data);
     });
 
     var prev = function () {

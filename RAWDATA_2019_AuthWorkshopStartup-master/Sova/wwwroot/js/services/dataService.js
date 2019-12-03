@@ -27,7 +27,6 @@
         $.getJSON(url, callback);
     };
 
-
     return {
         getNamesWithJQyery,
         getNamesWithFetch,
