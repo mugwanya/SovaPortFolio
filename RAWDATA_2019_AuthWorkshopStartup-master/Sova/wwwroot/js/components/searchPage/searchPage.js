@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace SovaWebAppicaltion.wwwroot.js.components.searchPage
-{
-    public class searchPage
-    {
-    }
-}
+﻿define([], function () {
+    return function (params) {
+        var name = params ? params.name : "";
+        return {
+            name
+        };
+    };
+});
