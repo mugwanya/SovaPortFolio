@@ -1,11 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿<h1>Search Page</h1>
 
-namespace SovaWebAppicaltion.wwwroot.js.components.searchPage
-{
-    public class searchPage
-    {
-    }
-}
+<div>
+    <div>
+        Search: <input <!--data-bind="value: search"--> />
+    </div>
+
+    <ul data-bind="foreach: posts">
+        <li
+            <a data-bind=" text: title"></a>
+        </li>
+    </ul>
+    <button data-bind="click: prevPage">Prev</button>
+    <button data-bind="click: nextPage">Next</button>
+</div>

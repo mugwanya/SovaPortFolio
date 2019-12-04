@@ -31,10 +31,10 @@ require(['knockout'], function(ko) {
             viewModel: { require: "components/pageTest/pageTest" },
             template: { require: "text!components/pageTest/pageTest.html" }
         });
-    ko.components.register('navbarpage',
+    ko.components.register('searchPage',
         {
-            viewModel: { require: "viewModel" },
-            template: { require: "text!../navbarpage.html" }
+            viewModel: { require: "components/searchPage/searchPage" },
+            template: { require: "text!components/searchPage/searchPage.html" }
         });
 });
 

@@ -1,11 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿define(["knockout", "dataService"], function (ko, ds) {
+    return function (params) {
 
-namespace SovaWebAppicaltion.wwwroot.js.components.searchPage
-{
-    public class searchPage
-    {
-    }
-}
+        var search = ko.observable();
+
+        var posts = ko.observableArray();
+        var next = ko.observable();
+        var prev = ko.observable();
+
+        var searchedPosts = function (url) {
+            ds.getUsersWithFetchAsync(url, function (data) {
+                console.log(data);
+                posts(data.items);
+                next(data.next);
+                prev(data.prev);
+            });
+
+        }
+
+        var nextPage = function () {
+            searchedPosts(next());
+        }
+        var prevPage = function () {
+            searchedPosts(prev());
+        }
+
+        searchedPosts('api/QA/posts')
+
+        
+
+        return {
+            posts,
+            nextPage,
+            prevPage
+        };
+    };
+});
