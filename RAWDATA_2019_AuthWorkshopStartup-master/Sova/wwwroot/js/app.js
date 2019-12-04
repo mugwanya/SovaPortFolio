@@ -5,8 +5,10 @@
     var changeContent = () => {
         if (currentComponent() === "page1") {
             currentComponent("page2");
+            currentComponent("navbarpage");
         } else {
             currentComponent("pageTest");
+
         }
     };
 
