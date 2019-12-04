@@ -1,7 +1,7 @@
 ﻿define(["knockout", "dataService"], function (ko, ds) {
     
 
-    var currentComponent = ko.observable("pageTest");
+    var currentComponent = ko.observable("page1");
     var currentParams = ko.observable({});
     var changeContent = () => {
         if (currentComponent() === "page1") {
