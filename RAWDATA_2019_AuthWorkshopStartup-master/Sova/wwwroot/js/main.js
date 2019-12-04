@@ -31,6 +31,11 @@ require(['knockout'], function(ko) {
             viewModel: { require: "components/pageTest/pageTest" },
             template: { require: "text!components/pageTest/pageTest.html" }
         });
+    ko.components.register('navbarpage',
+        {
+            viewModel: { require: "viewModel" },
+            template: { require: "text!../navbarpage.html" }
+        });
 });
 
 require(["knockout", "app"], function(ko, app, ds) {
