@@ -1,1 +1,10 @@
-﻿
+﻿<h1>Marking/notes page </h1>
+<div>
+    <ul data-bind="foreach: markings">
+        <li>
+            <a data-bind=" text: userId"></a>
+        </li>
+    </ul>
+    <button data-bind="click: prevPage">Prev</button>
+    <button data-bind="click: nextPage">Next</button>
+</div>
