@@ -38,11 +38,7 @@ require(['knockout'], function(ko) {
             template: { require: "text!components/searchPage/searchPage.html" }
         });
 
-    ko.components.register('navbarpage',
-        {
-            viewModel: { require: "components/navbar/navbarpage" },
-            template: { require: "text!components/navbar/navbarpage.html" }
-        });
+
 });
 
 
