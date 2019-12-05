@@ -2,7 +2,10 @@
     return function (params) {
 
         var markings = ko.observableArray();
-        var notes = ko.observableArray();
+        var selectedMarking = ko.observable();
+
+        var notes = ko.observable();
+
         var next = ko.observable();
         var prev = ko.observable();
 
@@ -14,6 +17,7 @@
                 prev(data.prev);
             });
         }
+        getMarkings('api/Framework/markings/usermarkings/1');
 
         var nextPage = function () {
             searchedPosts(next());
@@ -22,12 +26,26 @@
             searchedPosts(prev());
         }
 
-        getMarkings('api/Framework/markings/usermarkings/1');
+        var selectMarking = function (marking) {
+            selectedMarking(marking);
+        }
+
+        var getNotes = function (url) {
+            ds.getWithFetchAsync(url, function (data) {
+                console.log(data);
+                notes(data.items);
+            });
+        }
+
 
         return {
             markings,
             nextPage,
-            prevPage
+            prevPage,
+            getNotes,
+            selectedMarking,
+            selectMarking,
+            notes
         };
     };
 });

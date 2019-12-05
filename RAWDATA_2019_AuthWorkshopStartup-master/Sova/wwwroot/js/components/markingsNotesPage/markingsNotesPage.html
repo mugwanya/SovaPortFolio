@@ -1,11 +1,18 @@
 ﻿<h1>Marking/notes page </h1>
 <div>
     <ul data-bind="foreach: markings">
-        <li>
-            userId: <a data-bind=" text: userId"></a>,
-            post/comment id: <a data-bind=" text: postCommentId"></a>
+        <li data-bind="click: $parent.selectMarking">
+            userId: <span data-bind="text: userId"></span>
+            <!--post/comment id: <span data-bind=" text: postCommentId"></span>-->
         </li>
     </ul>
     <button data-bind="click: prevPage">Prev</button>
     <button data-bind="click: nextPage">Next</button>
+</div>
+
+
+<div>
+    <div data-bind="with: notes">
+        <div>Notes: <span data-bind="text: note" ></span></div>
+    </div>
 </div>
