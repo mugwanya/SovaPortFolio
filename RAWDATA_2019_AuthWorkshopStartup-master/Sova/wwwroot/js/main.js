@@ -6,6 +6,7 @@ require.config({
         knockout: "../lib/knockout/build/output/knockout-latest.debug",
         text: "../lib/requirejs-text/text",
         dataService: "services/dataService"
+     
 
     }
 });

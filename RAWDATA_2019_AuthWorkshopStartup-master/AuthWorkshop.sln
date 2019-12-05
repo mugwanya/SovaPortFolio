@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SovaDataAccessLayer", "Sova
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SovaDataAccessLayerTests1", "SovaDataAccessLayerTests1\SovaDataAccessLayerTests1.csproj", "{B57FDC1F-2DA7-4EE3-99CA-79F1121FA16D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontEnd", "FrontEnd\FrontEnd.csproj", "{135FF32F-A15E-4D47-8E32-B324D6F4A273}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FrontEnd", "FrontEnd\FrontEnd.csproj", "{135FF32F-A15E-4D47-8E32-B324D6F4A273}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
