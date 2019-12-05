@@ -22,7 +22,7 @@
             searchedPosts(prev());
         }
 
-        getMarkings('api/Framework/markings');
+        getMarkings('api/Framework/markings/usermarkings/1');
 
         return {
             markings,

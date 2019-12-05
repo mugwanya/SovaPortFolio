@@ -1,5 +1,6 @@
-﻿define(["knockout", "dataService"], function (ko, ds) {
-    
+﻿define(["knockout"], function (ko) {
+
+   
 
     var currentComponent = ko.observable("markingsNotesPage");
     var changeContent = () => {
