@@ -18,17 +18,18 @@
 
         var nextPage = function () {
             searchedPosts(next());
-        }
-        var prevPage = function () {
-            searchedPosts(prev());
-        }
+        };
+        var prevPage = function() {
+             searchedPosts(prev());
+        };
 
         searchedPosts('api/QA/posts');
 
         return {
             posts,
             nextPage,
-            prevPage
+            prevPage,
+            prev
         };
     };
 });

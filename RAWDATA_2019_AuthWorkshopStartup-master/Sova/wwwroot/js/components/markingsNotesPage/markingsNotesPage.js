@@ -3,9 +3,7 @@
 
         var markings = ko.observableArray();
         var selectedMarking = ko.observable();
-
         var notes = ko.observable();
-
         var next = ko.observable();
         var prev = ko.observable();
 
@@ -26,17 +24,15 @@
             searchedPosts(prev());
         }
 
-        var selectMarking = function (marking) {
-            selectedMarking(marking);
-        }
-
         var getNotes = function (url) {
             ds.getWithFetchAsync(url, function (data) {
                 console.log(data);
                 notes(data.items);
             });
         }
+        getNotes('api/Framework/notes');
 
+        goToFolder = function (folder) { selectedMarking(folder) };
 
         return {
             markings,
@@ -44,7 +40,6 @@
             prevPage,
             getNotes,
             selectedMarking,
-            selectMarking,
             notes
         };
     };

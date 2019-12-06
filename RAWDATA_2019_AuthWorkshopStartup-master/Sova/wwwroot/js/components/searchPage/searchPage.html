@@ -1,9 +1,8 @@
-﻿<navbarpage></navbarpage>
-<h1>Search Page</h1>
+﻿<h1>Search Page</h1>
 
 <div>
     <div>
-        Search: <input <!--data-bind="value: search"--> />
+        <!--Search: <input data-bind="value: search"/>-->
     </div>
 
     <ul data-bind="foreach: posts">
@@ -11,6 +10,8 @@
             <a data-bind=" text: title"></a>
         </li>
     </ul>
-    <button data-bind="click: prevPage">Prev</button>
+
+    <button data-bind="click: prevPage, visible: prev !== null">Prev</button>
     <button data-bind="click: nextPage">Next</button>
 </div>
+<input data-bind="value: prev" />

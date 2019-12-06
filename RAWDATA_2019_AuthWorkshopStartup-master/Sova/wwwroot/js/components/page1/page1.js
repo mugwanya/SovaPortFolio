@@ -90,7 +90,7 @@
         //    names(data);
         //});
 
-        ds.getNamesWithFetchAsync(function(data) {
+        ds.getWithFetchAsync(function(data) {
             names(data);
         });
 
