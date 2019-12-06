@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using Sova.Controller;
 using SovaDataAccessLayer;
 using SovaDataAccessLayer.DataServices;
+using SovaDataAccessLayer.DataServices.QAServices;
 using SovaDataAccessLayer.Interfaces;
 
 namespace Sova
@@ -32,6 +33,7 @@ namespace Sova
             services.AddSingleton<IUsersService, UsersService>();
             services.AddSingleton<IMarkingsService, markingsService>();
             services.AddSingleton<IHistoryService, HistoryService>();
+            services.AddSingleton<ISearchDataService, SearchDataService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
