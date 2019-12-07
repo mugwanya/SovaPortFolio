@@ -29,7 +29,8 @@
             posts,
             nextPage,
             prevPage,
-            prev
+            prev,
+            next
         };
     };
 });

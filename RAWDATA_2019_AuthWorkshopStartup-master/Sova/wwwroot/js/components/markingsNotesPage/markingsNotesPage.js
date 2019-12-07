@@ -40,7 +40,8 @@
             prevPage,
             getNotes,
             selectedMarking,
-            notes
+            notes,
+            prev
         };
     };
 });
