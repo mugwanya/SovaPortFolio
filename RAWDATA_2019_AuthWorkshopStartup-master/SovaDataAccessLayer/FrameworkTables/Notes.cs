@@ -8,7 +8,7 @@ namespace SovaDataAccessLayer.FrameworkTables
     {
         public int Id { get; set; }
         public int? Markingid { get; set; }
-        public int Userid { get; set; }
+        //public int Userid { get; set; }
         public string Note { get; set; }
     }
 }

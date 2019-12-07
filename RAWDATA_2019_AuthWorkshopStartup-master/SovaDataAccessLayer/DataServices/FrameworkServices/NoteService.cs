@@ -44,14 +44,14 @@ namespace SovaDataAccessLayer.DataServices
             return true;
         }
 
-        public List<Notes> Read(int userId, int markingId)
-        {
-            SovaContext db = new SovaContext();
-            return db.Notes
-                .Where(x => x.Userid == userId)
-                .Where(x => x.Markingid == markingId)
-                .Select(x => x).ToList();
-        }
+        //public List<Notes> Read(int userId, int markingId)
+        //{
+        //    SovaContext db = new SovaContext();
+        //    return db.Notes
+        //        .Where(x => x.Userid == userId)
+        //        .Where(x => x.Markingid == markingId)
+        //        .Select(x => x).ToList();
+        //}
 
         public Notes Read(int noteId)
         {
@@ -59,14 +59,14 @@ namespace SovaDataAccessLayer.DataServices
             return db.Notes.Find(noteId);
         }
 
-        public List<Notes> ReadAll(int userid, PagingAttributes pagingAttributes)
-        {
-            SovaContext db = new SovaContext();
-            return db.Notes
-                .Where(x => x.Userid == userid)
-                .Skip(pagingAttributes.Page * pagingAttributes.PageSize)
-                .Take(pagingAttributes.PageSize).ToList();
-        }
+        //public List<Notes> ReadAll(int userid, PagingAttributes pagingAttributes)
+        //{
+        //    SovaContext db = new SovaContext();
+        //    return db.Notes
+        //        .Where(x => x.Userid == userid)
+        //        .Skip(pagingAttributes.Page * pagingAttributes.PageSize)
+        //        .Take(pagingAttributes.PageSize).ToList();
+        //}
 
         public void Update(Notes updateNote)
         {
