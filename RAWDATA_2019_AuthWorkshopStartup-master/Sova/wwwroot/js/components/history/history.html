@@ -1,0 +1,49 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <div class="list-group" data-bind="foreach: historyrecords">
+                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">Search History:</h5>
+                        <small data-bind=" text: timestamped"></small>
+                    </div>
+                    <input type="checkbox" name="searchtopic" style="float: left; margin-top: 4px;">
+                    <div>
+                        <p class="mb-1" data-bind=" text: searchquery" style="border:2px; border-style:double; border-color:#FFFFFF;"></p>
+
+                    </div>
+
+
+                </a>
+
+            </div>
+        </div>
+        <div class="col-8">
+
+            <div class="form-check">
+                <button type="button" class="btn btn-danger">Remove selected items</button>
+
+                <div class="form-check">
+                    <div><input class="form-check-input fa-trash" type="checkbox" name="select-all" id="select-all"></div>
+                                  
+                    <div>
+                        <label class="form-check-label" for="defaultCheck1">
+                            Clear browsing data
+                        </label>
+                    </div>
+                </div> 
+
+            </div>
+
+           
+
+
+
+
+        </div>
+    </div>
+</div>
+
+
+
+

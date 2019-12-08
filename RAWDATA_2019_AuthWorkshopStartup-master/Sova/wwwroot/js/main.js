@@ -32,6 +32,12 @@ require(['knockout'], function(ko) {
             viewModel: { require: "components/pageTest/pageTest" },
             template: { require: "text!components/pageTest/pageTest.html" }
         });
+
+    ko.components.register('history',
+        {
+            viewModel: { require: "components/history/history" },
+            template: { require: "text!components/history/history.html" }
+        });
     ko.components.register('searchPage',
         {
             viewModel: { require: "components/searchPage/searchPage" },
@@ -42,6 +48,8 @@ require(['knockout'], function(ko) {
             viewModel: { require: "components/markingsNotesPage/markingsNotesPage" },
             template: { require: "text!components/markingsNotesPage/markingsNotesPage.html" }
         });
+
+
 
 });
 

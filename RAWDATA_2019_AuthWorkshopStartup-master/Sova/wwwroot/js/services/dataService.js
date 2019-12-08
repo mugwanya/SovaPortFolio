@@ -8,5 +8,6 @@
 
     return {
         getWithFetchAsync
+        
     }
 });
