@@ -2,10 +2,11 @@
     return function (params) {
 
         var markings = ko.observableArray();
-        var selectedMarking = ko.observable();
         var notes = ko.observable();
         var next = ko.observable();
         var prev = ko.observable();
+        var isSelected = ko.observable();
+
 
         var getMarkings = function (url) {
             ds.getWithFetchAsync(url, function (data) {
@@ -32,16 +33,19 @@
         }
         getNotes('api/Framework/notes');
 
-        goToFolder = function (folder) { selectedMarking(folder) };
+        var setIsSelected = function () {
+            isSelected(true);
+        }
 
         return {
             markings,
             nextPage,
             prevPage,
             getNotes,
-            selectedMarking,
             notes,
-            prev
+            prev,
+            isSelected,
+            setIsSelected
         };
     };
 });
