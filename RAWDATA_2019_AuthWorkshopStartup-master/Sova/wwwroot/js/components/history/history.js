@@ -1,16 +1,15 @@
-﻿define(["knockout", "dataService"], function (ko, ds) {
+define(["knockout", "dataService"], function (ko, ds) {
+
     return function (params) {
 
-        var search = ko.observable();
-
-        var posts = ko.observableArray();
+        var historyrecords = ko.observableArray();
         var next = ko.observable();
         var prev = ko.observable();
 
-        var searchedPosts = function (url) {
+        var runhistory = function (url) {
             ds.getUsersWithFetchAsync(url, function (data) {
                 console.log(data);
-                posts(data.items);
+                historyrecords(data.items);
                 next(data.next);
                 prev(data.prev);
             });
@@ -18,18 +17,16 @@
         }
 
         var nextPage = function () {
-            searchedPosts(next());
+            runhistory(next());
         }
         var prevPage = function () {
-            searchedPosts(prev());
+            runhistory(prev());
         }
 
-        searchedPosts('api/Framework/history/1')
+        runhistory('api/Framework/history/1')
 
-        
-
-        return {
-            posts,
+        return {     
+            historyrecords,
             nextPage,
             prevPage
         };
