@@ -5,9 +5,7 @@
         <thead><tr><th>UserId</th><th>post/comment Id</th></tr> </thead>
         <tbody data-bind="foreach: markings">
             <tr>
-                <td data-bind="text: userId", 
-               css: { selected: $data == $root.selectedMarking() },
-               click: $root.goToFolder></td>
+                <td data-bind="text: userId, click: setIsSelected"></td>               
                 <td data-bind=" text: postCommentId"></td>
             </tr>
         </tbody>
@@ -22,7 +20,7 @@
         <thead><tr><th>note</th></tr> </thead>
         <tbody data-bind="foreach: notes">
             <tr>
-                <td data-bind="text: note"></td>
+                <td data-bind="text: note, visible: isSelected"></td>
             </tr>
         </tbody>
     </table>
