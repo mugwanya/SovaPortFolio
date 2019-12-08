@@ -1,10 +1,11 @@
 define(["knockout", "dataService"], function (ko, ds) {
 
     return function (params) {
-
+        
         var historyrecords = ko.observableArray();
         var next = ko.observable();
         var prev = ko.observable();
+        
 
         var runhistory = function (url) {
             ds.getWithFetchAsync(url, function (data) {
@@ -23,12 +24,25 @@ define(["knockout", "dataService"], function (ko, ds) {
             runhistory(prev());
         }
 
+
+   
+
+
+  
+
+
         runhistory('api/Framework/history/1')
 
-        return {     
-            historyrecords,
-            nextPage,
-            prevPage
+        return {
+            
+             historyrecords,
+             nextPage,
+             prevPage
+           
+         
+         
+
+
         };
     };
 });
