@@ -2,14 +2,17 @@
 
 <div>
     <div>
-        Search: <input <!--data-bind="value: search"--> />
+        <!--Search: <input data-bind="value: search"/>-->
     </div>
 
     <ul data-bind="foreach: posts">
-        <li
-            <a data-bind=" text: searchquery"></a>
+        <li>
+            <a data-bind=" text: title"></a>
         </li>
     </ul>
-    <button data-bind="click: prevPage">Prev</button>
-    <button data-bind="click: nextPage">Next</button>
+
+    <button data-bind="click: prevPage, visible: prev">Prev</button>
+    <button data-bind="click: nextPage, visible: next">Next</button>
 </div>
+<input data-bind="value: prev" />
+

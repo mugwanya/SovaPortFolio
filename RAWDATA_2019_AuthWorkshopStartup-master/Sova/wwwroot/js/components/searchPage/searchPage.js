@@ -8,30 +8,29 @@
         var prev = ko.observable();
 
         var searchedPosts = function (url) {
-            ds.getUsersWithFetchAsync(url, function (data) {
+            ds.getWithFetchAsync(url, function (data) {
                 console.log(data);
                 posts(data.items);
                 next(data.next);
                 prev(data.prev);
             });
-
         }
 
         var nextPage = function () {
             searchedPosts(next());
-        }
-        var prevPage = function () {
-            searchedPosts(prev());
-        }
+        };
+        var prevPage = function() {
+             searchedPosts(prev());
+        };
 
-        searchedPosts('api/Framework/history/1')
-
-        
+        searchedPosts('api/QA/posts');
 
         return {
             posts,
             nextPage,
-            prevPage
+            prevPage,
+            prev,
+            next
         };
     };
 });

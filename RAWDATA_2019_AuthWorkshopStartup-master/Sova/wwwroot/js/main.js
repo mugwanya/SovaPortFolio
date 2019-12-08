@@ -43,7 +43,11 @@ require(['knockout'], function(ko) {
             viewModel: { require: "components/searchPage/searchPage" },
             template: { require: "text!components/searchPage/searchPage.html" }
         });
-
+    ko.components.register('markingsNotesPage',
+        {
+            viewModel: { require: "components/markingsNotesPage/markingsNotesPage" },
+            template: { require: "text!components/markingsNotesPage/markingsNotesPage.html" }
+        });
 
 
 
