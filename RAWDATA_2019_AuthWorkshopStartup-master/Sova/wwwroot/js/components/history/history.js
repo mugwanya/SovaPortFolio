@@ -7,7 +7,7 @@ define(["knockout", "dataService"], function (ko, ds) {
         var prev = ko.observable();
 
         var runhistory = function (url) {
-            ds.getUsersWithFetchAsync(url, function (data) {
+            ds.getWithFetchAsync(url, function (data) {
                 console.log(data);
                 historyrecords(data.items);
                 next(data.next);

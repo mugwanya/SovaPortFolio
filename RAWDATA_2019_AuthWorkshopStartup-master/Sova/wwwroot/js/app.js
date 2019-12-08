@@ -8,8 +8,8 @@
             currentComponent("page2");
             currentComponent("navbarpage");
         } else {
-            currentComponent("pageTest");
-
+            currentComponent("history");
+            
         }
     };
 
