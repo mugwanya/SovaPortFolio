@@ -13,7 +13,7 @@ namespace Sova.Controller
 {
 
     [ApiController]
-    [Route("api/QA/posts")]
+    [Route("api/qa/posts")]
     public class PostController : ControllerBase
     {
 
