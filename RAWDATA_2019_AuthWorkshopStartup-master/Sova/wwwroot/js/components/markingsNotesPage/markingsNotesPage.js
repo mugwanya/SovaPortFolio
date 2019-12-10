@@ -1,13 +1,11 @@
 ﻿define(["knockout", "dataService"], function (ko, ds) {
     return function (params) {
 
-
+        var posts = ko.observableArray();
         var markings = ko.observableArray();
         var notes = ko.observableArray();
         var next = ko.observable();
         var prev = ko.observable();
-        var isSelected = ko.observable();
-
 
         var getMarkings = function () {
             ds.getMarkingsByUserId(function (data) {
@@ -26,17 +24,36 @@
             searchedPosts(prev());
         }
 
-        var getNotes = function (markingId) {
-            ds.getNotesByMarkingId(markingId, function (data) {
+        //var getNotes = function (markingId) {
+        //    ds.getNotesByMarkingId(markingId, function (data) {
+        //        console.log(data);
+        //        notes(data.items);
+        //    });
+        //}
+        
+        //var selectedMarking = function (data) {
+        //    getNotes(data.id);
+        //};
+
+        var getPosts = function (postId) {
+            ds.getPostsById(postId, function (data) {
                 console.log(data);
-                notes(data.items);
+                posts(data.items);
             });
         }
-        
-        var setIsSelected = function (data) {
-            getNotes(data.id);
+        getPosts(19);
+
+        //for (var i = 0; markings.length(); i++) {
+        //    getPosts(markings[i].postCommentsId);
+        //}
+
+        var selectedMarking = function (makingData) {
+            ds.getNotesByMarkingId(makingData.id, function (notesData) {
+                console.log(notesData);
+                notes(notesData.items);
+            })
         };
-   
+
         return {
             markings,
             nextPage,
@@ -44,8 +61,8 @@
             notes,
             prev,
             next,
-            isSelected,
-            setIsSelected            
+            selectedMarking,
+            posts
         };
     };
 });

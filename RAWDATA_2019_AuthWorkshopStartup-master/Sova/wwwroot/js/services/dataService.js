@@ -18,9 +18,16 @@
         callback(data);
     };
 
+    var getPostsById = async function (postid, callback) {
+        var response = await fetch('api/qa/posts/' + postid);
+        var data = await response.json();
+        callback(data);
+    };
+
     return {
         getWithFetchAsync,
         getNotesByMarkingId,
-        getMarkingsByUserId
+        getMarkingsByUserId,
+        getPostsById
     }
 });
