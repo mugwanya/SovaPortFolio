@@ -44,14 +44,15 @@ namespace SovaDataAccessLayer.DataServices
             return true;
         }
 
-        //public List<Notes> Read(int userId, int markingId)
-        //{
-        //    SovaContext db = new SovaContext();
-        //    return db.Notes
-        //        .Where(x => x.Userid == userId)
-        //        .Where(x => x.Markingid == markingId)
-        //        .Select(x => x).ToList();
-        //}
+        public List<Notes> ReadByMarking(int markingId, PagingAttributes pagingAttributes)
+        {
+            SovaContext db = new SovaContext();
+            return db.Notes
+                .Where(x => x.Markingid == markingId)
+                .Select(x => x)
+                .Skip(pagingAttributes.Page * pagingAttributes.PageSize)
+                .Take(pagingAttributes.PageSize).ToList();
+        }
 
         public Notes Read(int noteId)
         {

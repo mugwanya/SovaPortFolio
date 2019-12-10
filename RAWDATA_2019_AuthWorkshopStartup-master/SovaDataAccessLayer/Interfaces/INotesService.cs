@@ -15,7 +15,7 @@ namespace SovaDataAccessLayer.Interfaces
         //List<Notes> ReadAll(int userid, PagingAttributes pagingAttributes);
 
         // would the markingsId not be unique, making specifying the userId obsolete??
-        //List<Notes> Read(int userId, int markingId); 
+        List<Notes> ReadByMarking(int markingId, PagingAttributes pagingAttributes); 
 
         //List<Note> Read(int userid, string query);
         Notes Read(int noteId);
