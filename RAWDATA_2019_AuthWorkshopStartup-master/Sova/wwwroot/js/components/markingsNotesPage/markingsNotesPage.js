@@ -43,9 +43,10 @@
         }
         getPosts(19);
 
-        //for (var i = 0; markings.length(); i++) {
-        //    getPosts(markings[i].postCommentsId);
+        //for (var i = 0; i < markings().length; i++) {
+        //    getPosts(markings()[i].postCommentsId);
         //}
+
 
         var selectedMarking = function (makingData) {
             ds.getNotesByMarkingId(makingData.id, function (notesData) {
