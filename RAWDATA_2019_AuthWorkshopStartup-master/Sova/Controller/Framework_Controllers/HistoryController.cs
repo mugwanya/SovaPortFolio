@@ -40,8 +40,8 @@ namespace SovaWebAppicaltion.Controller
             return Ok(_historyService.Read(userId, timestamp));
         }
 
-        // DELETE api/Framework/history/1
-        [HttpDelete("{userid}")]
+        // DELETE api/Framework/history/1/timestamp
+        [HttpDelete("delete/{userid}/{timestamp}")]
         public ActionResult Delete(int userid, DateTime timestamp)
         {
             if(_historyService.Delete(userid, timestamp))

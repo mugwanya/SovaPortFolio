@@ -24,25 +24,30 @@ define(["knockout", "dataService"], function (ko, ds) {
             runhistory(prev());
         }
 
+        var items = historyrecords;
+        var selectedItems = ko.observableArray();
 
-   
+        var deleteSelected = function () {
+            items.removeAll(selectedItems());
+            selectedItems.removeAll();
+        }
 
+    
 
-  
+    
 
 
         runhistory('api/Framework/history/1')
 
         return {
             
-             historyrecords,
-             nextPage,
-             prevPage
-           
-         
-         
-
-
+            historyrecords,
+            nextPage,
+            prevPage,
+            items,
+            selectedItems,
+            deleteSelected
+            
         };
     };
 });
