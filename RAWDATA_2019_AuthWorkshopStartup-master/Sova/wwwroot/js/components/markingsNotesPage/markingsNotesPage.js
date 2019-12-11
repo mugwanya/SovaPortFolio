@@ -7,6 +7,7 @@
         var next = ko.observable();
         var prev = ko.observable();
 
+
         var getMarkings = function () {
             ds.getMarkingsByUserId(function (data) {
                 console.log(data);
@@ -38,15 +39,17 @@
         var getPosts = function (postId) {
             ds.getPostsById(postId, function (data) {
                 console.log(data);
-                posts(data.items);
+                posts(data);
             });
         }
-        getPosts(19);
-
+        //getPosts(19);
+        console.log('before forloop');
         //for (var i = 0; i < markings().length; i++) {
+        //    console.log('inside forloop');
         //    getPosts(markings()[i].postCommentsId);
         //}
-
+        console.log(markings());
+        console.log('after forloop');
 
         var selectedMarking = function (makingData) {
             ds.getNotesByMarkingId(makingData.id, function (notesData) {
