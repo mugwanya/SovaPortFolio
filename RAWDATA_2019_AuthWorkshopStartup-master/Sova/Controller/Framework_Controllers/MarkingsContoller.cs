@@ -105,7 +105,11 @@ namespace SovaWebAppicaltion.Controller.Framework_Controllers
             var dto = _mapper.Map<MarkingsDto>(mark);
             dto.Link = Url.Link(
                 nameof(GetMarking),
-                new { markingId = mark.Id });
+                new { markingId = mark.Id
+                });
+            dto.PostUrl = Url.Link(nameof(Sova.Controller.PostController.GetPost),
+                new { postId = mark.PostCommentsId
+                });
             return dto;
         }
 

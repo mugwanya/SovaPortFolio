@@ -2,7 +2,7 @@
 
    
 
-    var currentComponent = ko.observable("markingsNotesPage");
+    var currentComponent = ko.observable("loginPage");
     var changeContent = () => {
         if (currentComponent() === "page1") {
             currentComponent("page2");

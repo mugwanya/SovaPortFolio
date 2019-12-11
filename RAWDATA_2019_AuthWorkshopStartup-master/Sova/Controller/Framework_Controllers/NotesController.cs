@@ -35,15 +35,15 @@ namespace SovaWebAppicaltion.Controller.Framework_Controllers
             return Ok(result);
         }
 
-        //[HttpGet("usernotes/{userId}", Name = nameof(GetNotesByUserId))]
-        //public ActionResult GetNotesByUserId(int userId,
-        //    [FromQuery]PagingAttributes pagingAttributes)
-        //{
-        //    var notes = _dataService.ReadAll(userId, pagingAttributes);
-        //    if (notes == null) return NotFound();
-        //    var result = CreatedResult(notes, pagingAttributes);
-        //    return Ok(result);
-        //}
+        [HttpGet("markings/{markingId}", Name = nameof(GetNotesByMarkingId))]
+        public ActionResult GetNotesByMarkingId(int markingId,
+            [FromQuery]PagingAttributes pagingAttributes)
+        {
+            var notes = _dataService.ReadByMarking(markingId, pagingAttributes);
+            if (notes == null) return NotFound();
+            var result = CreatedResult(notes, pagingAttributes);
+            return Ok(result);
+        }
 
         [HttpGet("{noteId}", Name = nameof(GetNote))]
         public ActionResult GetNote(int noteId)
@@ -110,7 +110,17 @@ namespace SovaWebAppicaltion.Controller.Framework_Controllers
             dto.Link = Url.Link(
                 nameof(GetNote),
                 new { noteId = note.Id });
+
+            dto.MarkingLink = Url.Link(
+                nameof(GetMarking),
+                new { markingId = note.Markingid});
+
             return dto;
+        }
+
+        private object GetMarking()
+        {
+            throw new NotImplementedException();
         }
 
         private string CreatePagingLink(int page, int pageSize)
