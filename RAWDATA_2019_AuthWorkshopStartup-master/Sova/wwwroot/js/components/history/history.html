@@ -5,14 +5,14 @@
                 <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">Search History:</h5>
-                        <small data-bind=" text: timestamped"></small>
+                        <!--<small data-bind=" text: timestamped"></small>-->
                     </div>
                     <!--<input type="checkbox" name="searchtopic" style="float: left; margin-top: 4px;">-->
                     <input type="checkbox" name="searchtopic" style="float: left; margin-top: 4px;" data-bind="value: $data, checked: $parent.selectedItems" />
                     <div>
                         <p class="mb-1" data-bind=" text: searchquery" style="border:2px; border-style:double; border-color:#FFFFFF;">
-
                         </p>
+                        <small data-bind=" text: timestamped"></small>
 
                     </div>
 

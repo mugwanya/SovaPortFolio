@@ -19,7 +19,8 @@
     };
 
     var deleteHistory = async function (userid, timestamp, callback) {
-        var response = await fetch('api/Framework/historydelete/'+ userid+ '/'+ timestamp);
+        //console.log('api/Framework/history/' + userid + '/' + timestamp);
+        var response = await fetch('api/Framework/history/' + userid + '/' + timestamp, { method: 'DELETE' });
         var data = await response.json();
         callback(data);
     };
@@ -37,7 +38,6 @@
     
 
     return {
-        getWithFetchAsync,
         getNotesByMarkingId,
         getMarkingsByUserId,
         getPostsById,
