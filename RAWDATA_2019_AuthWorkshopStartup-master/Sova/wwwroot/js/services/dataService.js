@@ -1,11 +1,5 @@
 ﻿define( function() {
 
-    var getWithFetchAsync = async function (url, callback) {
-        var response = await fetch(url);
-        var data = await response.json();
-        callback(data);
-    };
-
     var getMarkingsByUserId = async function (callback) {
         var response = await fetch('api/Framework/markings/usermarkings/1');
         var data = await response.json();
@@ -24,10 +18,30 @@
         callback(data);
     };
 
+    var deleteHistory = async function (userid, timestamp, callback) {
+        var response = await fetch('api/Framework/historydelete/'+ userid+ '/'+ timestamp);
+        var data = await response.json();
+        callback(data);
+    };
+
+    var getHistory = async function (callback) {
+        var response = await fetch('api/Framework/history/1');
+        var data = await response.json();
+        callback(data);
+    };
+    var getMarkingsByUserId = async function (callback) {
+        var response = await fetch('api/Framework/markings/usermarkings/1');
+        var data = await response.json();
+        callback(data);
+    };
+    
+
     return {
         getWithFetchAsync,
         getNotesByMarkingId,
         getMarkingsByUserId,
-        getPostsById
+        getPostsById,
+        deleteHistory,
+        getHistory
     }
 });

@@ -5,17 +5,16 @@ define(["knockout", "dataService"], function (ko, ds) {
         var historyrecords = ko.observableArray();
         var next = ko.observable();
         var prev = ko.observable();
-        
 
-        var runhistory = function (url) {
-            ds.getWithFetchAsync(url, function (data) {
+        var runhistory = function () {
+            ds.getHistory(function (data) {
                 console.log(data);
                 historyrecords(data.items);
                 next(data.next);
                 prev(data.prev);
             });
-
         }
+        runhistory();
 
         var nextPage = function () {
             runhistory(next());
@@ -31,13 +30,6 @@ define(["knockout", "dataService"], function (ko, ds) {
             items.removeAll(selectedItems());
             selectedItems.removeAll();
         }
-
-    
-
-    
-
-
-        runhistory('api/Framework/history/1')
 
         return {
             

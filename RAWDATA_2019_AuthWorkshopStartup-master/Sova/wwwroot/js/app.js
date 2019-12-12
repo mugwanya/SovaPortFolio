@@ -2,7 +2,7 @@
 
    
 
-    var currentComponent = ko.observable("loginPage");
+    var currentComponent = ko.observable("history");
     var changeContent = () => {
         if (currentComponent() === "page1") {
             currentComponent("page2");
