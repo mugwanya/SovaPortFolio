@@ -5,8 +5,9 @@ require.config({
         jquery: "../lib/jquery/dist/jquery",
         knockout: "../lib/knockout/build/output/knockout-latest.debug",
         text: "../lib/requirejs-text/text",
-        dataService: "services/dataService"
-     
+        dataService: "services/dataService",
+        store: "services/store"
+
 
     }
 });
@@ -59,7 +60,7 @@ require(['knockout'], function(ko) {
 
 
 
-require(["knockout", "app"], function(ko, app, ds) {
-   
+require(["knockout", "store", "app"], function(ko, store, app) {
+    store.subscribe(() => console.log(store.getState()));
     ko.applyBindings(app);
 });
