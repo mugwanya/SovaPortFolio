@@ -6,14 +6,30 @@
         var notes = ko.observableArray();
         var next = ko.observable();
         var prev = ko.observable();
-
+        var tmpList = [];
 
         var getMarkings = function () {
             ds.getMarkingsByUserId(function (data) {
-                console.log(data);
-                markings(data.items);
+                markings(data.items);       
                 next(data.next);
                 prev(data.prev);
+               
+                for (var i = 0; i < markings().length; i++) {
+                    ds.getPostsById(markings()[i].postCommentsId, function (data) {
+                        posts(data);
+                        for (var j = 0; j < markings().length; j++) {
+                            if (data.id == markings()[j].postCommentsId) {
+                                var newItems = {
+                                    id: markings()[j].id,
+                                    title: data.title
+                                }
+                                tmpList.push(newItems);
+                            }
+                        }
+                        posts(tmpList);
+                    });
+                }
+                console.log(tmpList);
             });
         }
         getMarkings();        
@@ -38,19 +54,21 @@
 
         var getPosts = function (postId) {
             ds.getPostsById(postId, function (data) {
-                console.log(data);
                 posts(data);
+                console.log('console.log(posts());');
+                console.log(posts());
+
+
+                tst.push(data);
+                
             });
         }
-        //getPosts(19);
-        console.log('before forloop');
+
         //for (var i = 0; i < markings().length; i++) {
         //    console.log('inside forloop');
         //    getPosts(markings()[i].postCommentsId);
         //}
-        console.log(markings());
-        console.log('after forloop');
-
+        
         var selectedMarking = function (makingData) {
             ds.getNotesByMarkingId(makingData.id, function (notesData) {
                 console.log(notesData);

@@ -1,19 +1,17 @@
-﻿<h1>Marking/notes page </h1>
+﻿<h1>Markings & notes page </h1>
 <div>
-
     <table class="table table-striped table-hover">
-        <thead><tr><th>UserId</th><th>post/comment Id</th></tr> </thead>
-        <tbody data-bind="foreach: markings">
+        <thead><tr><th>Title</th></tr> </thead>
+        <tbody data-bind="foreach: posts">
             <tr data-bind="click: $parent.selectedMarking">
-                <td data-bind="text: userId"></td>
-                <td data-bind="text: postUrl"></td>
-                <td data-bind=" text: postCommentsId"></td>
+                <td data-bind="text: title"></td>
             </tr>
         </tbody>
     </table>
+
     <button data-bind="click: prevPage, visible: prev">Prev</button>
     <button data-bind="click: nextPage, visible: next">Next</button>
-    
+
     <table class="table table-striped table-hover">
         <thead><tr><th>note</th></tr> </thead>
         <tbody data-bind="foreach: notes">
@@ -22,18 +20,6 @@
             </tr>
         </tbody>
     </table>
-
-    <!--<table class="table table-striped table-hover">
-        <thead><tr><th>title</th></tr> </thead>
-        <tbody data-bind="foreach: posts">
-            <tr>
-                <td data-bind="text: title"></td>
-            </tr>
-        </tbody>
-    </table>-->
-
-    <div class="label"></div>
-    <!--<div><input data-bind="value: posts().length" /></div>-->
 </div>
 
 

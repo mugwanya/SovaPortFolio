@@ -16,11 +16,11 @@
     var menuElements = [
         {
             name: "Component 1",
-            component: "loginPage"
+            component: "markingsNotesPage"
         },
         {
             name: "Component 2",
-            component: "markingsNotesPage"
+            component: "loginPage"
         },
         {
             name: "Component 3",
