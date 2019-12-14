@@ -1,4 +1,15 @@
 ﻿
+    <table class="table table-striped table-hover">
+        <thead><tr><th>Seach history</th> <th>Date</th></tr> </thead>
+        <tbody data-bind="foreach: historyrecords">
+            <tr>
+                <td data-bind="text: searchquery"></td>
+                <td data-bind="text: timestamped"></td>
+                <td><input type="checkbox" name="searchtopic" data-bind="value: $data, checked: $parent.selectedItems" /></td>
+            </tr>
+        </tbody>
+    </table>
+
     <div class="row">
         <div class="col-4">
             <div class="list-group" data-bind="foreach: historyrecords">
@@ -8,7 +19,8 @@
                         <!--<small data-bind=" text: timestamped"></small>-->
                     </div>
                     <!--<input type="checkbox" name="searchtopic" style="float: left; margin-top: 4px;">-->
-                    <input type="checkbox" name="searchtopic" style="float: left; margin-top: 4px;" data-bind="value: $data, checked: $parent.selectedItems" />
+                    <input type="checkbox" name="searchtopic" style="float: left; margin-top: 4px;"
+                           data-bind="value: $data, checked: $parent.selectedItems" />
                     <div>
                         <p class="mb-1" data-bind=" text: searchquery" style="border:2px; border-style:double; border-color:#FFFFFF;">
                         </p>
@@ -23,7 +35,8 @@
         <div class="col-8">
 
             <div class="form-check">
-                <button type="button" class="btn btn-danger" value="Remove Selected" data-bind="click: deleteSelected">Remove selected items</button>
+                <button type="button" class="btn btn-danger" value="Remove Selected" 
+                        data-bind="click: deleteSelected">Remove selected items</button>
 
                 <div class="form-check">
                     <div><input class=" form-check-input fa-trash" type="checkbox" onclick='selectAll()'></div>

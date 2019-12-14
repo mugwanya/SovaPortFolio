@@ -7,8 +7,11 @@
         var next = ko.observable();
         var prev = ko.observable();
         var tmpList = [];
+        var isChecked = ko.observableArray();
 
-        var getMarkings = function () {
+        
+
+        getMarkings = function () {
             ds.getMarkingsByUserId(function (data) {
                 markings(data.items);       
                 next(data.next);
@@ -21,7 +24,8 @@
                             if (data.id == markings()[j].postCommentsId) {
                                 var newItems = {
                                     id: markings()[j].id,
-                                    title: data.title
+                                    title: data.title,
+                                    selected: false
                                 }
                                 tmpList.push(newItems);
                             }
@@ -52,7 +56,7 @@
         //    getNotes(data.id);
         //};
 
-        var getPosts = function (postId) {
+        getPosts = function (postId) {
             ds.getPostsById(postId, function (data) {
                 posts(data);
                 console.log('console.log(posts());');
@@ -84,7 +88,9 @@
             prev,
             next,
             selectedMarking,
-            posts
+            posts,
+            isChecked
+           
         };
     };
 });
