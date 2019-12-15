@@ -1,27 +1,26 @@
 ﻿<h1>Search Page</h1>
 <body class="container">
-    <div class="container">
         <div class="row">
             <div class="col-sm">
                 <div class="container">
                     <form data-bind="submit: searchedPosts">
-                        <input class="input-group" 
-                               placeholder="Search" 
+                        <input class="input-group"
+                               placeholder="Search"
                                data-bind="value: search" />
                     </form>
                 </div>
             </div>
-
-            <div class="btn-group" role="group">
-                <button type="button" 
-                        class="btn btn-outline-info" 
-                        data-bind="click: prevPage">Prev</button>
-                <button type="button" 
-                        class="btn btn-outline-info" 
-                        data-bind="click: nextPage">Next</button>
-            </div>
         </div>
-    </div>
+        <div class="btn-group" role="group">
+            <button type="button"
+                    class="btn btn-outline-info"
+                    data-bind="click: prevPage"> Prev
+            </button>
+            <button type="button" 
+                    class="btn btn-outline-info"
+                    data-bind="click: nextPage"> Next
+            </button>
+        </div>
 
     <!--<button data-bind="click: prevPage, visible: prev">Prev</button>
     <button data-bind="click: nextPage">Next</button>
@@ -56,7 +55,7 @@
                                     </td>
                                     <td>
                                         <button type="button" class="btn btn-outline-info"
-                                                data-bind="click: tst">Mark</button>
+                                                <!--data-bind="click: tst"-->>Mark</button>
                                     </td>
                                 </tr>
                             </tbody>
