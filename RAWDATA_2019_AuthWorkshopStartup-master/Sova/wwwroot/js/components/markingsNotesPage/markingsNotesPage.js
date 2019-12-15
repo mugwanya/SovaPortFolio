@@ -9,6 +9,10 @@
         var tmpList = [];
         var isChecked = ko.observableArray();
 
+        tst = function () {
+
+        }
+
         getMarkings = function () {
             ds.getMarkingsByUserId(function (data) {
                 markings(data.items);       

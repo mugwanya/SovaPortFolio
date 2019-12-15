@@ -5,14 +5,20 @@
             <div class="col-sm">
                 <div class="container">
                     <form data-bind="submit: searchedPosts">
-                        <input class="input-group" placeholder="Search" data-bind="value: search" />
+                        <input class="input-group" 
+                               placeholder="Search" 
+                               data-bind="value: search" />
                     </form>
                 </div>
             </div>
 
             <div class="btn-group" role="group">
-                <button type="button" class="btn btn-outline-info" data-bind="click: prevPage">Prev</button>
-                <button type="button" class="btn btn-outline-info" data-bind="click: nextPage">Next</button>
+                <button type="button" 
+                        class="btn btn-outline-info" 
+                        data-bind="click: prevPage">Prev</button>
+                <button type="button" 
+                        class="btn btn-outline-info" 
+                        data-bind="click: nextPage">Next</button>
             </div>
         </div>
     </div>
@@ -41,16 +47,21 @@
                         </tbody>
                     </table>
                 </div>
-                    <nav class="col-sm" >
+                    <div class="col-sm" >
                         <table class="table">
                             <thead><tr><th>body</th></tr> </thead>
                             <tbody data-bind="foreach: body">
                                 <tr>
-                                    <td data-bind="text: body"></td>
+                                    <td data-bind="text: body">
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-outline-info"
+                                                data-bind="click: tst">Mark</button>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
-                    </nav>
+                    </div>
             </div>
         </div>
     </div>
