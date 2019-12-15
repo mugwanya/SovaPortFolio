@@ -15,20 +15,24 @@
 
     var menuElements = [
         {
-            name: "Component 1",
-            component: "markingsNotesPage"
+            name: "Component 0",
+            component: "searchPage"
         },
         {
-            name: "Component 2",
+            name: "Component 1",
             component: "loginPage"
         },
         {
-            name: "Component 3",
+            name: "Component 2",
             component: "history"
+        },
+        {
+            name: "Component 3",
+            component: "markingsNotesPage"
         }
     ];
 
-    var currentMenu = ko.observable(menuElements[0]);
+    var currentMenu = ko.observable(menuElements[2]);
     var currentComponent = ko.observable(currentMenu().component);
 
     var changeContent = function (menu) {

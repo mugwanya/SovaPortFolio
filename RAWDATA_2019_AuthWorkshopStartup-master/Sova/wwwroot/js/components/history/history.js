@@ -5,6 +5,18 @@ define(["knockout", "dataService"], function (ko, ds) {
         var historyrecords = ko.observableArray();
         var next = ko.observable();
         var prev = ko.observable();
+        var selectAllPressed = ko.observable(true);
+
+        selecetAllHasBeenPressed = function () {
+            if (selectAllPressed() === false) {
+                UnSelectAll();
+                selectAllPressed(true);
+            } else {
+                selectAll();
+                
+                selectAllPressed(false)
+            }
+        }
 
         var runhistory = function () {
             ds.getHistory(function (data) {
@@ -59,8 +71,11 @@ define(["knockout", "dataService"], function (ko, ds) {
             prevPage,
             items,
             selectedItems,
-            deleteSelected
-            
+            deleteSelected,
+            selecetAllHasBeenPressed,
+            selectAllPressed,
+            prev,
+            next
         };
     };
 });

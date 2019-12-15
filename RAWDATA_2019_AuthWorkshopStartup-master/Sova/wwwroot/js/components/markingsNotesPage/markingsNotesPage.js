@@ -9,8 +9,6 @@
         var tmpList = [];
         var isChecked = ko.observableArray();
 
-        
-
         getMarkings = function () {
             ds.getMarkingsByUserId(function (data) {
                 markings(data.items);       
@@ -77,7 +75,7 @@
             ds.getNotesByMarkingId(makingData.id, function (notesData) {
                 console.log(notesData);
                 notes(notesData.items);
-            })
+            });
         };
 
         return {

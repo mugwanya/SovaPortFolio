@@ -35,15 +35,18 @@
         var data = await response.json();
         callback(data);
     };
-
-
-    
+    var bestMatchSearch = async function (query, callback) {
+        var response = await fetch('api/qa/search/Best/1/'+ query);
+        var data = await response.json();
+        callback(data);
+    };
 
     return {
         getNotesByMarkingId,
         getMarkingsByUserId,
         getPostsById,
         deleteHistory,
-        getHistory
+        getHistory,
+        bestMatchSearch
     }
 });

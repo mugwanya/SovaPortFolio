@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Npgsql;
 using SovaDataAccessLayer.Interfaces;
+using SovaDataAccessLayer.QATables;
 using System;
 using System.Collections.Generic;
 using System.Data;

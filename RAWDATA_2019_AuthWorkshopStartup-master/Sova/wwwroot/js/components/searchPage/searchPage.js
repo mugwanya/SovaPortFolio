@@ -2,15 +2,16 @@
     return function (params) {
 
         var search = ko.observable();
-
         var posts = ko.observableArray();
         var next = ko.observable();
         var prev = ko.observable();
+        var body = ko.observableArray();
 
-        var searchedPosts = function (url) {
-            ds.getWithFetchAsync(url, function (data) {
+
+        searchedPosts = function () {
+            ds.bestMatchSearch(search(), function (data) {
                 console.log(data);
-                posts(data.items);
+                posts(data);
                 next(data.next);
                 prev(data.prev);
             });
@@ -23,14 +24,27 @@
              searchedPosts(prev());
         };
 
-        searchedPosts('api/QA/posts');
+        var selectedPost = function (postData) {
+            ds.getPostsById(postData.id, function (data) {
+                console.log(data);
+                body(data);
+            });
+        }
+        
+       
+        
 
         return {
             posts,
             nextPage,
             prevPage,
             prev,
-            next
+            next,
+            searchedPosts,
+            search,
+            body,
+            selectedPost
+            
         };
     };
 });
