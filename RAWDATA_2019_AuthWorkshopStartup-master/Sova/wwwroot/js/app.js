@@ -29,6 +29,10 @@
         {
             name: "Component 3",
             component: "markingsNotesPage"
+        },
+        {
+            name: "testPage",
+            component: "pageTest"
         }
     ];
 

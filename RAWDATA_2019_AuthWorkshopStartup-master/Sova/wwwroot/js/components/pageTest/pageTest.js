@@ -6,25 +6,27 @@
         var next = ko.observable();
         var prev = ko.observable();
 
-        var runUsers = function(url) {
-            ds.getUsersWithFetchAsync(url, function (data) {
+        var runUsers = function() {
+            ds.qaGetUsers(function (data) {
                 console.log(data);
                 users(data.items);
                 next(data.next);
-                prev(data.prev);
-            });
+                console.log(data.next);
 
+                //prev(data.prev);
+                console.log(data.prev);
+            });
         }
+        runUsers();
 
         var nextPage = function () {
-            runUsers(next());
+            runUsers(next);
         }
         var prevPage = function () {
             runUsers(prev());
         }
 
-        runUsers('api/Framework/users')
-
+        
         return {
             name,
             users,

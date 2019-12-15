@@ -6,6 +6,8 @@ define(["knockout", "dataService"], function (ko, ds) {
         var next = ko.observable();
         var prev = ko.observable();
         var selectAllPressed = ko.observable(true);
+        var selectedItems = ko.observableArray();
+        var items = selectedItems();
 
         selecetAllHasBeenPressed = function () {
             if (selectAllPressed() === false) {
@@ -13,7 +15,6 @@ define(["knockout", "dataService"], function (ko, ds) {
                 selectAllPressed(true);
             } else {
                 selectAll();
-                
                 selectAllPressed(false)
             }
         }
@@ -41,28 +42,30 @@ define(["knockout", "dataService"], function (ko, ds) {
             runhistory(prev());
         }
 
-        
-        var selectedItems = ko.observableArray();
-        var items = selectedItems();
-        console.log(items.length);
+        var addToSelectedItems = function () {
+            console.log('test');
+
+            selectedItems().push($data);
+            console.log($data);
+        }
 
         var deleteSelected = function () {
-            //items.removeAll(selectedItems());
-            //selectedItems.removeAll();
-
-            //ds.deleteHistory(items()[0].userid, items()[0].timestamped);
-
             console.log('before loop');
-            for (var i = 0; i < items.length; i++) {
+            for (var i = 0; i < selectedItems().length; i++) {
                
                 console.log('inside loop');
-
-                ds.deleteHistory(items[i].userid, items[i].timestamped);
-                historyrecords.remove(items[i]);
+                console.log(selectedItems());
+                console.log(selectedItems()[i]);
+                ds.deleteHistory(
+                    selectedItems()[i].userid,
+                    selectedItems()[i].timestamped
+                );
+                //ds.deleteHistory(items[i].userid, items[i].timestamped);
+                historyrecords.remove(selectedItems()[i]);
+                selectedItems.remove(selectedItems()[i]);
+                console.log(selectedItems());
             }
             console.log('after loop');
-
-            //historyrecords(items);
         }
 
         return {
@@ -75,7 +78,8 @@ define(["knockout", "dataService"], function (ko, ds) {
             selecetAllHasBeenPressed,
             selectAllPressed,
             prev,
-            next
+            next,
+            addToSelectedItems
         };
     };
 });

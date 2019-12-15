@@ -40,6 +40,11 @@
         var data = await response.json();
         callback(data);
     };
+    var qaGetUsers = async function (callback) {
+        var response = await fetch('api/QA/users');
+        var data = await response.json();
+        callback(data);
+    }; 
 
     return {
         getNotesByMarkingId,
@@ -47,6 +52,7 @@
         getPostsById,
         deleteHistory,
         getHistory,
-        bestMatchSearch
+        bestMatchSearch,
+        qaGetUsers
     }
 });
