@@ -66,7 +66,7 @@
     };
     var addNoteToMarking = async function ( markingid, note) {
         var data = {
-            MarkingsId: markingid,
+            MarkingId: markingid,
             Note: note
         }
         var response = await fetch('api/Framework/notes/', {

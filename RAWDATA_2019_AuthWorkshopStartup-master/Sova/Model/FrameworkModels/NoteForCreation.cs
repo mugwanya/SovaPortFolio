@@ -9,7 +9,7 @@ namespace SovaWebAppicaltion.Model
     public class NoteForCreation
     {
         [Required]
-        public int MarkingsId { get; set; }
+        public int MarkingId { get; set; }
         
         //[Required]
         //public int UserId { get; set; }

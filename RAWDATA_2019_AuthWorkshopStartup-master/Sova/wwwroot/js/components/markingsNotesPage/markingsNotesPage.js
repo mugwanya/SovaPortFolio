@@ -83,7 +83,7 @@
 
         addNote = function () {
             console.log(noteValue());
-            console.log(currentMarking());
+            console.log(currentMarking().id);
             ds.addNoteToMarking(currentMarking().id, noteValue());
         }
 

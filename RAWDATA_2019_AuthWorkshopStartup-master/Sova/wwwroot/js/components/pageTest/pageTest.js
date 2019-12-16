@@ -1,4 +1,4 @@
-﻿define(["knockout", "dataService"], function (ko, ds) {
+﻿define(["knockout", "dataService", "store"], function (ko, ds) {
 
     return function (params) {
 

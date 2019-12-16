@@ -6,8 +6,8 @@ require.config({
         knockout: "../lib/knockout/build/output/knockout-latest.debug",
         text: "../lib/requirejs-text/text",
         dataService: "services/dataService",
-        store: "services/store"
-
+        store: "services/store",
+        jqcloud: "../lib/jqcloud2/dist/jqcloud"
 
     }
 });
@@ -54,11 +54,11 @@ require(['knockout'], function(ko) {
             viewModel: { require: "components/loginPage/loginPage" },
             template: { require: "text!components/loginPage/loginPage.html" }
         });
-
-
+    ko.components.register('cloud', {
+        viewModel: { require: "components/wordcloud/cloud" },
+        template: { require: "text!components/wordcloud/cloud.html" }
+    });
 });
-
-
 
 require(["knockout", "store", "app"], function(ko, store, app) {
     store.subscribe(() => console.log(store.getState()));

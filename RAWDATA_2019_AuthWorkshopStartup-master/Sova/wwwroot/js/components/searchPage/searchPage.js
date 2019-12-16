@@ -7,6 +7,8 @@
         var prev = ko.observable();
         var body = ko.observableArray();
         var currentPost = ko.observable();
+        var markings = ko.observableArray();
+        var excistInMarking = ko.observable(false);
 
         searchedPosts = function () {
             ds.bestMatchSearch(search(), function (data) {
@@ -24,8 +26,27 @@
              searchedPosts(prev());
         };
 
+        getMarkings = function () {
+            ds.getMarkingsByUserId(function (data) {
+                markings(data.items);
+                next(data.next);
+                prev(data.prev);
+            });
+        }
+
         var selectedPost = function (postData) {
             currentPost(postData);
+            //getMarkings();
+
+            //for (var i = 0; i < markings().length; i++) {
+            //    if (currentPost(postData).id === markings()[i].postCommentsId) {
+            //        excistInMarking(false);
+            //    } else {
+            //        excistInMarking(true);
+            //    }
+            //}
+            //console.log("excistInMarking");
+            //console.log(excistInMarking());
             ds.getPostsById(postData.id, function (data) {
                 console.log(data);
                 body(data);
@@ -36,6 +57,8 @@
             console.log(currentPost());
             ds.addPostMarking(1, currentPost().id);
         }
+
+
 
         return {
             posts,
