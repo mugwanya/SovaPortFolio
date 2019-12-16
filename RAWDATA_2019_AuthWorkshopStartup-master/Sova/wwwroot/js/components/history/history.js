@@ -19,8 +19,8 @@ define(["knockout", "dataService"], function (ko, ds) {
             }
         }
 
-        var runhistory = function () {
-            ds.getHistory(function (data) {
+        var runhistory = function (url) {
+            var callback = function (data) {
                 console.log(data);
                 //var newItems = data.items.map(x => {
                 //   userId:  x.userid,
@@ -30,8 +30,12 @@ define(["knockout", "dataService"], function (ko, ds) {
                 //});
                 historyrecords(data.items);
                 next(data.next);
-                prev(data.prev);
-            });
+                prev(data.previous);
+            };
+            if (url === undefined)
+                ds.getHistory(callback);
+            else
+                ds.getHistory(url, callback);
         }
         runhistory();
 

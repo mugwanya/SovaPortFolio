@@ -24,9 +24,12 @@
         var data = await response.json();
         callback(data);
     };
-
-    var getHistory = async function (callback) {
-        var response = await fetch('api/Framework/history/1');
+    var getHistory = async function (url, callback) {
+        if (callback === undefined) {
+            callback = url;
+            url = 'api/Framework/history/1';
+        }
+        var response = await fetch(url);
         var data = await response.json();
         callback(data);
     };
