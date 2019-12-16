@@ -6,6 +6,6 @@ namespace SovaDataAccessLayer
 {
     public static class DatabaseConnection
     {
-        public static readonly string ConnectionString = "host=localhost;db=stackoverflow;uid=SOVAAPI;pwd=rawdata";
+        public static readonly string ConnectionString = "host=rawdata.ruc.dk;port=5432;db=raw10;uid=raw10;pwd=Y0IpE(Ed";
     }
 }
