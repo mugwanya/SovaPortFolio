@@ -32,7 +32,7 @@
             });
         }
 
-        tst = function () {
+        addMark = function () {
             console.log(currentPost());
             ds.addPostMarking(1, currentPost().id);
         }
@@ -47,7 +47,7 @@
             search,
             body,
             selectedPost,
-            tst
+            addMark
             
         };
     };

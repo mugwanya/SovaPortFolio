@@ -11,8 +11,8 @@ namespace SovaWebAppicaltion.Model
         [Required]
         public int MarkingsId { get; set; }
         
-        [Required]
-        public int UserId { get; set; }
+        //[Required]
+        //public int UserId { get; set; }
         
         [MaxLength(300)]
         public string Note { get; set; }

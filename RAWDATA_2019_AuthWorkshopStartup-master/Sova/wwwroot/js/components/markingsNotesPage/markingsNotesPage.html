@@ -1,12 +1,27 @@
 ﻿<h1>Markings & notes page </h1>
 <div>
     <div class="btn-group" role="group">
-        <button type="button" 
-                class="btn btn-outline-info" 
-                data-bind="click: prevPage">Prev</button>
-        <button type="button" 
-                class="btn btn-outline-info" 
-                data-bind="click: nextPage">Next</button>
+        <button type="button"
+                class="btn btn-outline-info"
+                data-bind="click: prevPage">
+            Prev
+        </button>
+        <button type="button"
+                class="btn btn-outline-info"
+                data-bind="click: nextPage">
+            Next
+        </button>
+        <button type="button"
+                class="btn btn-outline-info"
+                data-bind="click: addNote">
+            Add note
+        </button>
+    </div>
+    <div class="input-group">
+        <textarea class="form-control" 
+                  placeholder="Add note" 
+                  aria-label="With textarea"
+                  data-bind="textInput: noteValue"></textarea>
     </div>
 
     <div class="container-fluid">
@@ -27,7 +42,7 @@
             </div>
             <div class="col-sm">
                 <table class="table table-striped table-hover">
-                    <thead><tr><th>note</th></tr> </thead>
+                    <thead><tr><th>notes</th></tr> </thead>
                     <tbody data-bind="foreach: notes">
                         <tr>
                             <td data-bind="text: note"></td>
@@ -43,7 +58,7 @@
         <tbody data-bind="foreach: posts">
             <tr data-bind="click: $parent.selectedMarking">
                 <td data-bind="text: title"></td>
-                <td><input type="checkbox" 
+                <td><input type="checkbox"
                            data-bind="value: $data, checked: $parent.selected" /></td>
             </tr>
         </tbody>

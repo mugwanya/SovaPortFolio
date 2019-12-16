@@ -8,10 +8,8 @@
         var prev = ko.observable();
         var tmpList = [];
         var isChecked = ko.observableArray();
-
-        tst = function () {
-
-        }
+        var noteValue = ko.observable();
+        var currentMarking = ko.observable();
 
         getMarkings = function () {
             ds.getMarkingsByUserId(function (data) {
@@ -58,17 +56,17 @@
         //    getNotes(data.id);
         //};
 
-        getPosts = function (postId) {
-            ds.getPostsById(postId, function (data) {
-                posts(data);
-                console.log('console.log(posts());');
-                console.log(posts());
+        //getPosts = function (postId) {
+        //    ds.getPostsById(postId, function (data) {
+        //        posts(data);
+        //        console.log('console.log(posts());');
+        //        console.log(posts());
 
 
-                tst.push(data);
+        //        tst.push(data);
                 
-            });
-        }
+        //    });
+        //}
 
         //for (var i = 0; i < markings().length; i++) {
         //    console.log('inside forloop');
@@ -76,11 +74,18 @@
         //}
         
         var selectedMarking = function (makingData) {
+            currentMarking(makingData);
             ds.getNotesByMarkingId(makingData.id, function (notesData) {
                 console.log(notesData);
                 notes(notesData.items);
             });
         };
+
+        addNote = function () {
+            console.log(noteValue());
+            console.log(currentMarking());
+            ds.addNoteToMarking(currentMarking().id, noteValue());
+        }
 
         return {
             markings,
@@ -91,8 +96,8 @@
             next,
             selectedMarking,
             posts,
-            isChecked
-           
+            isChecked,
+            noteValue
         };
     };
 });

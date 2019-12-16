@@ -64,8 +64,21 @@
         });    
         return await response.json();
     };
+    var addNoteToMarking = async function ( markingid, note) {
+        var data = {
+            MarkingsId: markingid,
+            Note: note
+        }
+        var response = await fetch('api/Framework/notes/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+        return await response.json();
+    };
 
     return {
+        addNoteToMarking,
         getNotesByMarkingId,
         getMarkingsByUserId,
         getPostsById,
