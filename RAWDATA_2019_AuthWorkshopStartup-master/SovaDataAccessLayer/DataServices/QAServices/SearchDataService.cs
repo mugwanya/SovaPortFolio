@@ -17,7 +17,7 @@ namespace SovaDataAccessLayer.DataServices.QAServices
             List<BestResults> results = new List<BestResults>();
             using (NpgsqlConnection connect = new NpgsqlConnection(DatabaseConnection.ConnectionString))
             {
-                using (NpgsqlCommand search = new NpgsqlCommand("stackoverflow.qa.best_match_search", connect))
+                using (NpgsqlCommand search = new NpgsqlCommand("qa.best_match_search", connect))
                 {
                     search.CommandType = CommandType.StoredProcedure;
                     search.Parameters.AddWithValue("user_id", userId);
@@ -45,7 +45,7 @@ namespace SovaDataAccessLayer.DataServices.QAServices
             List<int> results = new List<int>();
             using (NpgsqlConnection connect = new NpgsqlConnection(DatabaseConnection.ConnectionString))
             {
-                using (NpgsqlCommand search = new NpgsqlCommand("stackoverflow.qa.search", connect))
+                using (NpgsqlCommand search = new NpgsqlCommand("qa.search", connect))
                 {
                     search.CommandType = CommandType.StoredProcedure;
                     search.Parameters.AddWithValue("user_id", userId);

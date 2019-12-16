@@ -17,11 +17,6 @@ namespace SovaDataAccessLayer
         public DbSet<Word> Words { get; set; }
         public DbSet<Wi> Wis { get; set; }
 
-        /*//Searches
-        public DbQuery<Post> search { get; set; }
-        public DbQuery<Post> exact_match { get; set; }
-        public DbQuery<Post> best_match { get; set; }*/
-
         //Framework model
         public DbSet<History> Histories { get; set; }
         public DbSet<Marking> Markings { get; set; }
@@ -103,19 +98,6 @@ namespace SovaDataAccessLayer
             modelBuilder.Entity<Marking>().Property(m => m.Id).HasColumnName("id");
             modelBuilder.Entity<Marking>().Property(m => m.UserId).HasColumnName("userid");
             modelBuilder.Entity<Marking>().Property(m => m.PostCommentsId).HasColumnName("postscommentsid");
-
-            /*modelBuilder.Query<Post>().ToQuery("search", "QA");
-            modelBuilder.Query<Post>().Property(m => m.Id).HasColumnName("id");
-            modelBuilder.Query<Post>().Property(m => m.PostTypeId).HasColumnName("posttypeid");
-            modelBuilder.Query<Post>().Property(m => m.ParentId).HasColumnName("parentid");
-            modelBuilder.Query<Post>().Property(m => m.AcceptedAnswersId).HasColumnName("acceptedanswerid");
-            modelBuilder.Query<Post>().Property(m => m.CreationDate).HasColumnName("creationdate");
-            modelBuilder.Query<Post>().Property(m => m.Score).HasColumnName("score");
-            modelBuilder.Query<Post>().Property(m => m.Body).HasColumnName("body");
-            modelBuilder.Query<Post>().Property(m => m.CloseDate).HasColumnName("closedate");
-            modelBuilder.Query<Post>().Property(m => m.Title).HasColumnName("title");
-            modelBuilder.Query<Post>().Property(m => m.Tags).HasColumnName("tags");
-            modelBuilder.Query<Post>().Property(m => m.UserId).HasColumnName("userid");*/
         }
     }
 }
