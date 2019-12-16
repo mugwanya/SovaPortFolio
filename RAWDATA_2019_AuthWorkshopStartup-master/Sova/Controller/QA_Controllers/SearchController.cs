@@ -39,7 +39,7 @@ namespace SovaWebAppicaltion.Controller.QA_Controllers
         [HttpGet("Simple/{userid}/{query}", Name = nameof(SimpleSearch))]
         public ActionResult SimpleSearch(int userId, string query)
         {
-            List<int> postid = _searchService.SimpleSearch(userId, query);
+            List<int> postid = _searchService.SimpleSearch(userId, query.ToLower());
             List<Post> results = new List<Post>();
             foreach (int pid in postid)
             {
@@ -52,7 +52,7 @@ namespace SovaWebAppicaltion.Controller.QA_Controllers
         [HttpGet("Best/{userid}/{query}", Name = nameof(BestSearch))]
         public ActionResult BestSearch(int userId, string query)
         {
-            string[] keywords = query.Split(' ');
+            string[] keywords = query.ToLower().Split(' ');
             List<BestResults> postid = _searchService.BestSearch(userId, keywords);
             List<Post> results = new List<Post>();
             foreach (BestResults pid in postid)
