@@ -32,10 +32,6 @@
                     <tbody data-bind="foreach: posts">
                         <tr data-bind="click: $parent.selectedMarking">
                             <td data-bind="text: title"></td>
-                            <td>
-                                <input type="checkbox"
-                                       data-bind="value: $data, checked: $parent.selected" />
-                            </td>
                         </tr>
                     </tbody>
                 </table>

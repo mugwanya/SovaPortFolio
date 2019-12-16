@@ -29,11 +29,12 @@
         {
             name: "Markings",
             component: "markingsNotesPage"
-        },
-        {
-            name: "testPage",
-            component: "pageTest"
         }
+        //,
+        //{
+        //    name: "testPage",
+        //    component: "pageTest"
+        //}
     ];
 
     var currentMenu = ko.observable(menuElements[0]);
