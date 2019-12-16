@@ -13,12 +13,14 @@
         </div>
         <div class="btn-group" role="group">
             <button type="button"
-                    class="btn btn-outline-info"
-                    data-bind="click: prevPage"> Prev
+                    class="btn btn-info"
+                    data-bind="click: prevPage, enable: prev">
+                Prev
             </button>
-            <button type="button" 
-                    class="btn btn-outline-info"
-                    data-bind="click: nextPage"> Next
+            <button type="button"
+                    class="btn btn-info"
+                    data-bind="click: nextPage, enable: next">
+                Next
             </button>
         </div>
 

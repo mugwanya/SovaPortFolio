@@ -17,12 +17,12 @@
         var data = await response.json();
         callback(data);
     };
-    var deleteHistory = async function (userid, timestamp, callback) {
-        //console.log('api/Framework/history/' + userid + '/' + timestamp);
-        var response = await fetch('api/Framework/history/' + userid + '/' + timestamp, { method: 'DELETE' });
-        var data = await response.json();
-        callback(data);
-    };
+    //var deleteHistory = async function (userid, timestamp, callback) {
+    //    //console.log('api/Framework/history/' + userid + '/' + timestamp);
+    //    var response = await fetch('api/Framework/history/' + userid + '/' + timestamp, { method: 'DELETE' });
+    //    var data = await response.json();
+    //    callback(data);
+    //};
     var getHistory = async function (url, callback) {
         if (callback === undefined) {
             callback = url;
@@ -73,6 +73,12 @@
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
+        });
+        return await response.json();
+    };
+    var deleteHistory = async function (userid, timestamp) {
+        var response = await fetch('api/Framework/history/' + userid + '/' + timestamp, {
+            method: 'DELETE'
         });
         return await response.json();
     };

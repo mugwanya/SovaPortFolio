@@ -10,6 +10,7 @@
         var isChecked = ko.observableArray();
         var noteValue = ko.observable();
         var currentMarking = ko.observable();
+        var noteEligible = ko.observable(false);
 
         getMarkings = function () {
             ds.getMarkingsByUserId(function (data) {
@@ -45,36 +46,10 @@
             searchedPosts(prev());
         }
 
-        //var getNotes = function (markingId) {
-        //    ds.getNotesByMarkingId(markingId, function (data) {
-        //        console.log(data);
-        //        notes(data.items);
-        //    });
-        //}
-        
-        //var selectedMarking = function (data) {
-        //    getNotes(data.id);
-        //};
-
-        //getPosts = function (postId) {
-        //    ds.getPostsById(postId, function (data) {
-        //        posts(data);
-        //        console.log('console.log(posts());');
-        //        console.log(posts());
-
-
-        //        tst.push(data);
-                
-        //    });
-        //}
-
-        //for (var i = 0; i < markings().length; i++) {
-        //    console.log('inside forloop');
-        //    getPosts(markings()[i].postCommentsId);
-        //}
         
         var selectedMarking = function (makingData) {
             currentMarking(makingData);
+            noteEligible(true);
             ds.getNotesByMarkingId(makingData.id, function (notesData) {
                 console.log(notesData);
                 notes(notesData.items);
@@ -88,6 +63,7 @@
         }
 
         return {
+            noteEligible,
             markings,
             nextPage,
             prevPage,

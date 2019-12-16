@@ -18,7 +18,7 @@
                 data-bind="click: deleteSelected">
             Remove selected
         </button>
-        <div data-bind="if: selectAllPressed() === false, click: selecetAllHasBeenPressed">
+        <!--<div data-bind="if: selectAllPressed() === false, click: selecetAllHasBeenPressed">
             <button type="button"
                     class="btn btn-outline-primary">
                 deselect all
@@ -29,7 +29,7 @@
                     class="btn btn-outline-primary">
                 select all
             </button>
-        </div>
+        </div>-->
     </div>
 </div>
     
@@ -39,61 +39,12 @@
         <tr>
             <td data-bind="text: searchquery"></td>
             <td data-bind="text: timestamped"></td>
-            <td><input type="checkbox" 
-                       name="searchtopic" 
-                       data-bind="value: $data, checked: $parent.selectedItems" /></td>
+            <td class="float-right">
+            <td><input type="radio"
+               name="searchtopic"
+               data-bind="value: $data, checked: $parent.selectedItems" /></td>
         </tr>
     </tbody>
 </table>
-
-<!--<div class="row">-->
-    <!--<div class="col-4">
-        <div class="list-group" data-bind="foreach: historyrecords">
-            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
-                <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">Search History:</h5>
-                    <small data-bind=" text: timestamped"></small>
-                </div>
-                <input type="checkbox" name="searchtopic" style="float: left; margin-top: 4px;">
-                <input type="checkbox" name="searchtopic" style="float: left; margin-top: 4px;"
-                       data-bind="value: $data, checked: $parent.selectedItems" />
-                <div>
-                    <p class="mb-1" data-bind=" text: searchquery" style="border:2px; border-style:double; border-color:#FFFFFF;">
-                    </p>
-                    <small data-bind=" text: timestamped"></small>
-
-                </div>
-
-
-            </a>
-        </div>
-    </div>-->
-    <!--<div class="col-8">
-
-            <div class="form-check">
-                <button type="button" class="btn btn-danger" value="Remove Selected"
-                        data-bind="click: deleteSelected">Remove selected items</button>
-
-                <div class="form-check">
-                    <div><input class=" form-check-input fa-trash" type="checkbox" onclick='selectAll()'></div>
-
-                    <div>
-                        <label class="form-check-label" for="defaultCheck1">
-                            Clear browsing data
-                        </label>
-                    </div>
-
-                    <div><input class=" form-check-input fa-trash" type="checkbox" onclick='UnSelectAll()'></div>
-
-                    <div>
-                        <label class="form-check-label" for="defaultCheck1">
-                            Unselect all
-                        </label>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>-->
 
 
