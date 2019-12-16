@@ -20,7 +20,7 @@
         runUsers();
 
         var nextPage = function () {
-            runUsers(next);
+            ds.getNextPage(next());
         }
         var prevPage = function () {
             runUsers(prev());

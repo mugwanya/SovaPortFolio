@@ -51,11 +51,12 @@
                             <thead><tr><th>body</th></tr> </thead>
                             <tbody data-bind="foreach: body">
                                 <tr>
-                                    <td data-bind="text: body">
+                                    <td data-bind="html: body">
                                     </td>
                                     <td>
-                                        <button type="button" class="btn btn-outline-info"
-                                                <!--data-bind="click: tst"-->>Mark</button>
+                                        <button type="button" 
+                                                class="btn btn-outline-info"
+                                                data-bind="click: tst">Mark</button>
                                     </td>
                                 </tr>
                             </tbody>

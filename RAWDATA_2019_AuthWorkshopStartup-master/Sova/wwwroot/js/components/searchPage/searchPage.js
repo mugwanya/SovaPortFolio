@@ -6,7 +6,7 @@
         var next = ko.observable();
         var prev = ko.observable();
         var body = ko.observableArray();
-
+        var currentPost = ko.observable();
 
         searchedPosts = function () {
             ds.bestMatchSearch(search(), function (data) {
@@ -25,14 +25,17 @@
         };
 
         var selectedPost = function (postData) {
+            currentPost(postData);
             ds.getPostsById(postData.id, function (data) {
                 console.log(data);
                 body(data);
             });
         }
-        
-       
-        
+
+        tst = function () {
+            console.log(currentPost());
+            ds.addPostMarking(1, currentPost().id);
+        }
 
         return {
             posts,
@@ -43,7 +46,8 @@
             searchedPosts,
             search,
             body,
-            selectedPost
+            selectedPost,
+            tst
             
         };
     };

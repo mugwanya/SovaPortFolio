@@ -17,7 +17,6 @@
         var data = await response.json();
         callback(data);
     };
-
     var deleteHistory = async function (userid, timestamp, callback) {
         //console.log('api/Framework/history/' + userid + '/' + timestamp);
         var response = await fetch('api/Framework/history/' + userid + '/' + timestamp, { method: 'DELETE' });
@@ -47,7 +46,24 @@
         var response = await fetch('api/QA/users');
         var data = await response.json();
         callback(data);
-    }; 
+    };
+    var getNextPage = async function (url, callback) {
+        var response = await fetch(url);
+        var data = await response.json();
+        callback(data);
+    }
+    var addPostMarking = async function (userid, postId) {
+        var data = {
+            PostCommentsId: postId,
+            UserId: userid
+        }
+        var response = await fetch('api/framework/markings/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });    
+        return await response.json();
+    };
 
     return {
         getNotesByMarkingId,
@@ -56,6 +72,8 @@
         deleteHistory,
         getHistory,
         bestMatchSearch,
-        qaGetUsers
+        qaGetUsers,
+        getNextPage,
+        addPostMarking
     }
 });
